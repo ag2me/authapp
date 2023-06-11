@@ -96,20 +96,20 @@
            - The endpoint expects the following parameters to be included in the request body:
            - BranchName: Represents the name/location of the branch.
            - EntityNameID: Contains the ID of the associated EntityName being created.
-           - Example Request:
-             - POST /api/branches/
-             - `{
+         - Example Request:
+           - POST /api/branches/
+           - `{
+               "BranchName": "Mabolo",
+               "EntityNameID": 1
+             }`
+          - Example Response:
+            - Upon successful creation of the branch, the API will return the following response:
+            - `{
+                 "BranchID": 2,
+                 "EntityNameID": 1,
                  "BranchName": "Mabolo",
-                 "EntityNameID": 1
+                 "BranchCode": "BFA9"
                }`
-           - Example Response:
-             - Upon successful creation of the branch, the API will return the following response:
-             - `{
-                  "BranchID": 2,
-                  "EntityNameID": 1,
-                  "BranchName": "Mabolo",
-                  "BranchCode": "BFA9"
-                }`
 
       2. To check branch successfully added.
          - This endpoint retrieves a list of branches for the specified company/entity. 
@@ -128,7 +128,30 @@
                  "ReferenceTableStatusID": 1,
                  "DateAdded": "2023-06-11T12:08:05Z",
                  "DateUpdated": null
-             }`
+             }`      
+         - To display all modules
+             - Request `/api/branches/`
+             - Response `[
+                            {
+                                "BranchID": 1,
+                                "BranchName": "Colon",
+                                "BranchCode": "Colon",
+                                "EntityNameID": 1,
+                                "ReferenceTableStatusID": 1,
+                                "DateAdded": "2023-06-09T18:24:59Z",
+                                "DateUpdated": null
+                            },
+                            {
+                                "BranchID": 2,
+                                "BranchName": "Mabolo",
+                                "BranchCode": "BFA9",
+                                "EntityNameID": 1,
+                                "ReferenceTableStatusID": 1,
+                                "DateAdded": "2023-06-11T12:08:05Z",
+                                "DateUpdated": null
+                            }
+                        ]` 
+                      
       3. Create System.
          - This endpoint is used to add a new system to the specified entity/company.
          - HTTP Method: POST
@@ -169,49 +192,199 @@
                    "DateAdded": "2023-06-11T15:23:56Z",
                    "DateUpdated": null
                }`
-      5. Create Modules.
-         - This endpoint is used to add a new modules for the system created.
-         - HTTP Method: POST
-         - Parameters: 
-            - SystemName (string): The name of the system.
-            - EntityNameID (integer): The unique identifier of the entity/company.
-            - SystemDescription (string): A description of the system.
-         - Example Request:
-            - POST `/api/systems/`
-            -  `{
-                    "SystemName": "Realty System",
-                    "EntityNameID": 1,
-                    "SystemDescription": "For Realty"
-                }`
-          - Example Response:
-             - `{
-                    "SystemID": 3,
-                    "EntityNameID": 1,
-                    "SystemName": "Realty System",
-                    "SystemDescription": "For Realty"
-                }`
-      8. To verify the modules added, use the `Get the list of the modules` endpoint.
-      9. To create a user login, you can use the Signup endpoint. Make sure to provide the username, email, and password of the user:
-          - Endpoint: /api/signup
+            - To display to all
+               - Request `/api/systems/`
+               - Response `[
+                              {
+                                  "SystemID": 1,
+                                  "EntityNameID": 1,
+                                  "SystemCode": "AU",
+                                  "SystemName": "Auth System",
+                                  "SystemDescription": null,
+                                  "ReferenceTableStatusID": 1,
+                                  "DateAdded": "2023-06-09T18:38:14Z",
+                                  "DateUpdated": null
+                              },
+                              {
+                                  "SystemID": 2,
+                                  "EntityNameID": 1,
+                                  "SystemCode": null,
+                                  "SystemName": "POS System",
+                                  "SystemDescription": "This is for cashiering and sales monitoring",
+                                  "ReferenceTableStatusID": 1,
+                                  "DateAdded": "2023-06-11T11:40:09Z",
+                                  "DateUpdated": null
+                              }
+                          ]` 
+      5. Create Module 
+          - Refers to the Modules used for the system. 
+          - HTTP Method: POST
+          - parameters:
+             - ModuleName: This parameter represents the name of the module and the navigation.
+             - SystemID: This parameter contains the ID of the system being created.
+             - ModuleController: This parameter is used for navigation when the IsComponent parameter is set to 'N'.
+             - ModuleDescription: This parameter provides a description of the module.
+             - ModuleParentID: Set this parameter to either 1 or 0 to indicate the module's parent ID.
+             - ModuleSequence: This parameter represents the sequence number of the module.
+             - IsDefaultSystemController: Use 'N' if the module is for navigation purposes. Use 'Y' if the module is for permissions such as create, delete, and others.
+           - endpoint `api/modules/`
+           - Request `{
+                           "ModuleName" : "Transaction"
+                           ,"SystemID" : 1
+                           ,"ModuleController": "transaction/"
+                           ,"ModuleDescription": "Transaction of the system"
+                           ,"ModuleParentID":"1"
+                           ,"ModuleSequence" : 1
+                           ,"IsComponent": "N"
+                           ,"IsDefaultSystemController":"N"
+                       }`
+            - Response
+                     `{
+                         "ModuleID": 2,
+                         "SystemID": 1,
+                         "ModuleName": "Transaction",
+                         "ModuleController": "transaction/",
+                         "ModuleDescription": "Transaction of the system",
+                         "ModuleParentID": 1,
+                         "ModuleSequence": 1,
+                         "IsComponent": "N",
+                         "IsDefaultSystemController": "N"
+                     }`
+      6. To verify the modules added.
+           * The statement describes a GET method used to retrieve modules. The parameter used is search, which allows for filtering the modules based on their names using a "like" operator.
+           - HTTP Method: GET
+           - search (string): This parameter represents the branch name to search for.
+             - Request `/api/modules/?search=trans`
+             - Response `[
+                               {
+                                   "ModuleID": 2,
+                                   "SystemID": 1,
+                                   "ModuleName": "Transaction",
+                                   "ModuleController": "transaction/",
+                                   "ModuleDescription": "Transaction of the system",
+                                   "ModuleParentID": 1,
+                                   "ModuleSequence": 1,
+                                   "IsComponent": "N",
+                                   "IsDefaultSystemController": "N",
+                                   "ReferenceTableStatusID": 1,
+                                   "DateAdded": "2023-06-11T11:13:29Z",
+                                   "DateUpdated": null
+                               }
+                           ]`
+           - To display all modules
+               - Request `/api/modules/`
+               - Response `[
+                              {
+                                  "ModuleID": 1,
+                                  "SystemID": 1,
+                                  "ModuleName": "Dashboard",
+                                  "ModuleController": "dashboard/",
+                                  "ModuleDescription": null,
+                                  "ModuleParentID": 1,
+                                  "ModuleSequence": 1,
+                                  "IsComponent": "N",
+                                  "IsDefaultSystemController": "Y",
+                                  "ReferenceTableStatusID": 1,
+                                  "DateAdded": "2023-06-09T18:49:39Z",
+                                  "DateUpdated": null
+                              },
+                              {
+                                  "ModuleID": 2,
+                                  "SystemID": 1,
+                                  "ModuleName": "Transaction",
+                                  "ModuleController": "transaction/",
+                                  "ModuleDescription": "Transaction of the system",
+                                  "ModuleParentID": 1,
+                                  "ModuleSequence": 1,
+                                  "IsComponent": "N",
+                                  "IsDefaultSystemController": "N",
+                                  "ReferenceTableStatusID": 1,
+                                  "DateAdded": "2023-06-11T11:13:29Z",
+                                  "DateUpdated": null
+                              }
+                          ]` 
+      
+      7. Create Signup 
+          -  Refers to the action of adding a new user account to the system. 
+          -  Make sure to provide the username, email, and password of the user:
           - Method: POST
           - Parameters:
             - username (string): The desired username for the user.
             - email (string): The email address of the user.
             - password (string): The password for the user's account.
+          - endpoint `api/signup`
+          - Request
+                `{
+                 "username": "johngaring"
+                 ,"email" : "ag2@gmail.com"
+                 ,"password": "qwerty"
+               }`
+          - Response
+              `{
+                  "UserLoginID": 8,
+                  "UserLoginEmail": "ag2@gmail.comm",
+                  "UserLoginName": "johngaring",
+                  "ReferenceTableStatusID": 1
+                }`
             
-      8. To check if a user has been successfully added, you can utilize the Login endpoint by providing the username and password as parameters
-          - Endpoint: /api/login
+      8. To Login
+          - To check if a user has been successfully added. 
           - Method: POST
           - Parameters:
              - username (string): This is the username or email that the user provided during the signup process.
               - password (string): This is the password that the user set during the signup process.
+             - endpoint `api/login/`
+          - endpoint `api/login/`
+          - Request  
+                 `
+                   {
+                       "username": "johngaring"
+                       ,"password": "qwerty"
+                   }
+                 `
+          - Response
+                `
+                  [
+                      {
+                          "UserLoginID": 8,
+                          "DefaultBranchID": null,
+                          "GroupCode": "STF",
+                          "UserLoginName": "johngaring",
+                          "UserLoginEmail": "ag2@gmail.com",
+                          "BranchID": 1,
+                          "BranchName": "Colon",
+                          "BranchCode": "Colon",
+                          "EntityNameID": null,
+                          "EntityName": "Moreton Bay Company",
+                          "ModuleController": "dashboard/",
+                          "SystemID": 1,
+                          "SystemName": "Auth System",
+                          "IsSuccess": "1",
+                          "Result": "Success",
+                          "IsLogin": true
+                      }
+                  ]
+                `
              
-      9. To create roles, use the Create Roles endpoint. 
-          - Endpoint: /api/roles
+      9. Create Roles
+         - Refers to the process of establishing or defining new roles within a system, roles are used to group users based on their                responsibilities, access levels, or job functions. This includes determining the permissions, privileges, and access rights              associated with each role. Roles can be customized to meet specific organizational needs, such as 'administrator,' 'manager,''user,' or others. This is a POST method where UserGroupName is required.
           - Method: POST
           - Parameters:
             - UserGroupName (string): The desired Name of the group.   
-            
+         - endpoint `api/roles/`
+          - Request
+              `
+                {
+                    "UserGroupName": "Manager"
+                }    
+              `
+          - Response
+              `
+                 {
+                     "UserGroupID": 5,
+                     "UserGroupName": "Manager"
+                 }        
+              `          
       10. To verify if the roles have been successfully added, you can utilize the Get available roles endpoint, ensuring to utilize the search parameter to get the desired roles you want.
          - Endpoint: /api/roles
          - Method: GET
@@ -227,73 +400,9 @@
       17. To add a list of roles to the user, use the `Adding of list of roles to the user` endpoint.
       18. To verify if the list roles addet to user has been successfully added, use `Getting the list of roles assigned to a user` endpoint.
       19. To check the list of permissions assigned to a user, use the `Get list of permissions assigned to a user` endpoint.
-             
- # API 
-  * Signup
-    -  Refers to the action of adding a new user account to the system. This is a POST method where username, email, and password are             required.
-        - endpoint `api/signup`
-        - Request
-              `{
-               "username": "johngaring"
-               ,"email" : "ag2@gmail.com"
-               ,"password": "qwerty"
-             }`
-        - Response
-            `{
-                "UserLoginID": 8,
-                "UserLoginEmail": "ag2@gmail.comm",
-                "UserLoginName": "johngaring",
-                "ReferenceTableStatusID": 1
-              }`
-* Login
-   - Refers to the user's login process to access the system. This is a POST method where in username or email and password is required.
-     - endpoint `api/login/`
-     - Request  
-            `
-              {
-                  "username": "johngaring"
-                  ,"password": "qwerty"
-              }
-            `
-     - Response
-           `
-             [
-                 {
-                     "UserLoginID": 8,
-                     "DefaultBranchID": null,
-                     "GroupCode": "STF",
-                     "UserLoginName": "johngaring",
-                     "UserLoginEmail": "ag2@gmail.com",
-                     "BranchID": 1,
-                     "BranchName": "Colon",
-                     "BranchCode": "Colon",
-                     "EntityNameID": null,
-                     "EntityName": "Moreton Bay Company",
-                     "ModuleController": "dashboard/",
-                     "SystemID": 1,
-                     "SystemName": "Auth System",
-                     "IsSuccess": "1",
-                     "Result": "Success",
-                     "IsLogin": true
-                 }
-             ]
-           `
-* Create Roles
-   - Refers to the process of establishing or defining new roles within a system, roles are used to group users based on their                responsibilities, access levels, or job functions. This includes determining the permissions, privileges, and access rights              associated with each role. Roles can be customized to meet specific organizational needs, such as 'administrator,' 'manager,''user,' or others. This is a POST method where UserGroupName is required.
-     - endpoint `api/roles/`
-     - Request
-         `
-           {
-               "UserGroupName": "Manager"
-           }    
-         `
-     - Response
-         `
-            {
-                "UserGroupID": 5,
-                "UserGroupName": "Manager"
-            }        
-         `
+    
+    
+    # TO BE ADD HOW TO USE
 * Get available roles
    - Refers to the action of retrieving or obtaining a list of roles that are available within a system. This functionality allows users      or administrators to view the various roles that have been defined and can be assigned to users. This is a GET method with no            required parameters. If you want to display the GroupName, simply use the 'search' parameter and provide the GroupName as the value.      The result is displayed in a similar manner to the 'like' operator.
      - endpoint `api/roles/`
@@ -590,208 +699,10 @@
                    }
                ]`
      
-* Create System
-    - Refers to the name of the system your are created. This is a POST method.
-       - endpoint `api/systems/`
-       - parameters: 
-          - SystemName: This parameter represents the name of the system being created.
-          - EntityNameID: This parameter contains the ID of the company associated with the system.
-          - SystemDescription: This parameter provides a description of the system.
-           
-       - Request 
-                `{
-                      "SystemName" : "POS System"
-                      ,"EntityNameID" : 1
-                      ,"SystemDescription" : "This is for cashiering and sales monitoring"
-                  }`
-        - Response 
-                   `{
-                         "SystemID": 2,
-                         "EntityNameID": 1,
-                         "SystemName": "POS System",
-                         "SystemDescription": "This is for cashiering and sales monitoring"
-                     }`
-* Get the list of the System
-    - The statement describes a GET method used to retrieve system. The parameter used is search, which allows for filtering the system based on their SystemName using a "like" operator.
-      - endpoint `api/systems/`
-      - For using search parameter  
-         - Request `/api/systems/?search=auth`
-         - Response `[
-                        {
-                            "SystemID": 1,
-                            "EntityNameID": 1,
-                            "SystemCode": "AU",
-                            "SystemName": "Auth System",
-                            "SystemDescription": null,
-                            "ReferenceTableStatusID": 1,
-                            "DateAdded": "2023-06-09T18:38:14Z",
-                            "DateUpdated": null
-                        }
-                    ]` 
-       - To display to all
-         - Request `/api/systems/`
-         - Response `[
-                        {
-                            "SystemID": 1,
-                            "EntityNameID": 1,
-                            "SystemCode": "AU",
-                            "SystemName": "Auth System",
-                            "SystemDescription": null,
-                            "ReferenceTableStatusID": 1,
-                            "DateAdded": "2023-06-09T18:38:14Z",
-                            "DateUpdated": null
-                        },
-                        {
-                            "SystemID": 2,
-                            "EntityNameID": 1,
-                            "SystemCode": null,
-                            "SystemName": "POS System",
-                            "SystemDescription": "This is for cashiering and sales monitoring",
-                            "ReferenceTableStatusID": 1,
-                            "DateAdded": "2023-06-11T11:40:09Z",
-                            "DateUpdated": null
-                        }
-                    ]` 
-* Create Module 
-     - Refers to the Modules used for the system. This is a POST method.
-        - parameters:
-          - ModuleName: This parameter represents the name of the module and the navigation.
-          - SystemID: This parameter contains the ID of the system being created.
-          - ModuleController: This parameter is used for navigation when the IsComponent parameter is set to 'N'.
-          - ModuleDescription: This parameter provides a description of the module.
-          - ModuleParentID: Set this parameter to either 1 or 0 to indicate the module's parent ID.
-          - ModuleSequence: This parameter represents the sequence number of the module.
-          - IsDefaultSystemController: Use 'N' if the module is for navigation purposes. Use 'Y' if the module is for permissions such as create, delete, and others.
-        - endpoint `api/modules/`
-        - Request `{
-                      "ModuleName" : "Transaction"
-                      ,"SystemID" : 1
-                      ,"ModuleController": "transaction/"
-                      ,"ModuleDescription": "Transaction of the system"
-                      ,"ModuleParentID":"1"
-                      ,"ModuleSequence" : 1
-                      ,"IsComponent": "N"
-                      ,"IsDefaultSystemController":"N"
-                  }`
-         - Response
-                  `{
-                      "ModuleID": 2,
-                      "SystemID": 1,
-                      "ModuleName": "Transaction",
-                      "ModuleController": "transaction/",
-                      "ModuleDescription": "Transaction of the system",
-                      "ModuleParentID": 1,
-                      "ModuleSequence": 1,
-                      "IsComponent": "N",
-                      "IsDefaultSystemController": "N"
-                  }`
- * Get the list of the modules
-     * The statement describes a GET method used to retrieve modules. The parameter used is search, which allows for filtering the modules based on their names using a "like" operator.
-          - endpoint `api/modules/`
-          - Search parameter is used
-             - Request `/api/modules/?search=trans`
-             - Response `[
-                             {
-                                 "ModuleID": 2,
-                                 "SystemID": 1,
-                                 "ModuleName": "Transaction",
-                                 "ModuleController": "transaction/",
-                                 "ModuleDescription": "Transaction of the system",
-                                 "ModuleParentID": 1,
-                                 "ModuleSequence": 1,
-                                 "IsComponent": "N",
-                                 "IsDefaultSystemController": "N",
-                                 "ReferenceTableStatusID": 1,
-                                 "DateAdded": "2023-06-11T11:13:29Z",
-                                 "DateUpdated": null
-                             }
-                         ]`
-           - To display all modules
-               - Request `/api/modules/`
-               - Response `[
-                              {
-                                  "ModuleID": 1,
-                                  "SystemID": 1,
-                                  "ModuleName": "Dashboard",
-                                  "ModuleController": "dashboard/",
-                                  "ModuleDescription": null,
-                                  "ModuleParentID": 1,
-                                  "ModuleSequence": 1,
-                                  "IsComponent": "N",
-                                  "IsDefaultSystemController": "Y",
-                                  "ReferenceTableStatusID": 1,
-                                  "DateAdded": "2023-06-09T18:49:39Z",
-                                  "DateUpdated": null
-                              },
-                              {
-                                  "ModuleID": 2,
-                                  "SystemID": 1,
-                                  "ModuleName": "Transaction",
-                                  "ModuleController": "transaction/",
-                                  "ModuleDescription": "Transaction of the system",
-                                  "ModuleParentID": 1,
-                                  "ModuleSequence": 1,
-                                  "IsComponent": "N",
-                                  "IsDefaultSystemController": "N",
-                                  "ReferenceTableStatusID": 1,
-                                  "DateAdded": "2023-06-11T11:13:29Z",
-                                  "DateUpdated": null
-                              }
-                          ]` 
- * <a name="create-branch"></a>Create Branch
-    * Refers to adding of Branch for the company/entityname. This is a POST method. 
-        - endpoint `api/branches/`
-        - parameters:
-          - BranchName: This parameter represents of where is the branch located.
-          - EntityNameID: This parameter contains the ID of the EntityName being created.
-        - Request `{
-                        "BranchName" : "Mabolo"
-                        ,"EntityNameID": 1
-                    }`
-        - Response `{
-                         "BranchID": 2,
-                         "EntityNameID": 1,
-                         "BranchName": "Mabolo",
-                         "BranchCode": "BFA9"
-                     }`
+
+
+
        
-* Get the list of branches
-  * The statement describes a GET method used to retrieve branches. The parameter used is search, which allows for filtering the branches based on their names using a "like" operator.
-     - endpoint `api/branches/`
-      - Search parameter is used
-         - Request `/api/branches/?search=mab`
-         - Response `[
-                         {
-                             "BranchID": 2,
-                             "BranchName": "Mabolo",
-                             "BranchCode": "BFA9",
-                             "EntityNameID": 1,
-                             "ReferenceTableStatusID": 1,
-                             "DateAdded": "2023-06-11T12:08:05Z",
-                             "DateUpdated": null
-                         }
-                     ]`
-       - To display all modules
-           - Request `/api/branches/`
-           - Response `[
-                          {
-                              "BranchID": 1,
-                              "BranchName": "Colon",
-                              "BranchCode": "Colon",
-                              "EntityNameID": 1,
-                              "ReferenceTableStatusID": 1,
-                              "DateAdded": "2023-06-09T18:24:59Z",
-                              "DateUpdated": null
-                          },
-                          {
-                              "BranchID": 2,
-                              "BranchName": "Mabolo",
-                              "BranchCode": "BFA9",
-                              "EntityNameID": 1,
-                              "ReferenceTableStatusID": 1,
-                              "DateAdded": "2023-06-11T12:08:05Z",
-                              "DateUpdated": null
-                          }
-                      ]` 
+
 # HOW TO USE UNIT TEST
 * python manage.py test
