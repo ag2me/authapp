@@ -55,9 +55,10 @@
          - This represents the assignment of users to specific roles and permissions. It establishes which users are assigned to which user groups and their corresponding permissions.
          
    * Diagram
-       * [Click me for the image](https://github.com/ag2me/auth_app/raw/readme/image/authapp%20diagram.bmp)
-       
+       * [Click me for the image](https://github.com/ag2me/auth_app/raw/readme/image/authapp%20diagram.bmp)   
+   
 * Installation
+    * Clone Repo [:](https://github.com/ag2me/authapp.git) 
     * Python
        - Version compatible  from 3.9 to latest
        - install virtualenv and wrapper
@@ -86,7 +87,7 @@
     * Unit Test 
        - Used django built-in test case
        
- # HOW TO USE
+ # HOW TO USE API
    * After completing the installations, we can now begin using the system.
       1. Create the Branch.        
          - This endpoint is used to add a branch for a company/entity.
@@ -168,7 +169,27 @@
                    "DateAdded": "2023-06-11T15:23:56Z",
                    "DateUpdated": null
                }`
-      7. To create the modules, use the `Create Module` endpoint.
+      5. Create Modules.
+         - This endpoint is used to add a new modules for the system created.
+         - HTTP Method: POST
+         - Parameters: 
+            - SystemName (string): The name of the system.
+            - EntityNameID (integer): The unique identifier of the entity/company.
+            - SystemDescription (string): A description of the system.
+         - Example Request:
+            - POST `/api/systems/`
+            -  `{
+                    "SystemName": "Realty System",
+                    "EntityNameID": 1,
+                    "SystemDescription": "For Realty"
+                }`
+          - Example Response:
+             - `{
+                    "SystemID": 3,
+                    "EntityNameID": 1,
+                    "SystemName": "Realty System",
+                    "SystemDescription": "For Realty"
+                }`
       8. To verify the modules added, use the `Get the list of the modules` endpoint.
       9. To create a user login, you can use the Signup endpoint. Make sure to provide the username, email, and password of the user:
           - Endpoint: /api/signup
@@ -206,8 +227,7 @@
       17. To add a list of roles to the user, use the `Adding of list of roles to the user` endpoint.
       18. To verify if the list roles addet to user has been successfully added, use `Getting the list of roles assigned to a user` endpoint.
       19. To check the list of permissions assigned to a user, use the `Get list of permissions assigned to a user` endpoint.
-      
-       
+             
  # API 
   * Signup
     -  Refers to the action of adding a new user account to the system. This is a POST method where username, email, and password are             required.
@@ -773,3 +793,5 @@
                               "DateUpdated": null
                           }
                       ]` 
+# HOW TO USE UNIT TEST
+* python manage.py test
