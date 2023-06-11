@@ -1,0 +1,15 @@
+{
+	"AUTH_APP_DB_NAME" : "authapp",
+	"AUTH_APP_DB_HOST" : "localhost",
+	"AUTH_APP_DB_PORT" : "3306",
+	"AUTH_APP_DB_USER" : "YOUR_SQL_USER",
+	"AUTH_APP_DB_PASS" : "YOUR_PASSWORD_USER",	
+	"DEBUG_MODE" : "True",    
+	"DB_PREFIX" : "DYN",    
+	"DOMAIN_HOST" : "localhost",    
+	"DOMAIN_IP" : "127.0.0.1",    
+    "SECRET_KEY" : "lt@+%150_tuo^%8#9_uhm^k2hdd0z",
+    "SYSTEM_CODE" : "AU"
+}
+
+
