@@ -1,0 +1,357 @@
+{% extends "base/app.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/setup/group/group.css' %}" />
+<div class="card card-secondary m-4">
+    <div class="card-header">
+        <h3 class="card-title">Manage Group</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
+            <li class="nav-item">
+            <a class="nav-link active" id="custom-content-below-main-group-tab" data-toggle="pill" href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Main Group</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="custom-content-below-group-tab" data-toggle="pill" href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Group</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="custom-content-below-group-member-tab" data-toggle="pill" href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">Group Member</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="custom-content-below-module-tab" data-toggle="pill" href="#custom-content-below-settings" role="tab" aria-controls="custom-content-below-settings" aria-selected="false">Modules</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="custom-content-below-tabContent">
+            <div class="tab-pane fade show active" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-main-group-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-filter">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-8 col-lg-9 col-xl-9">
+                                    <div class="input-group mb-3">
+                                        <input type="text" id="in-search-main-group" class="form-control rounded-0">
+                                        <span class="input-group-append">
+                                        <button type="button" class="btn btn-info btn-flat" id="btn-search-main-group">Search</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                    <button type="button" class="btn btn-outline-info btn-flat" id="btn-new-main-group"><i class="fa fa-folder-open"></i> New</button>
+                                    <button type="button" class="btn btn-outline-danger btn-flat" id="btn-clear-main-group"><i class="fa fa-eraser"></i> Clear</button>
+                                </div>
+                            </div>                
+                        </form>
+                    </div>            
+                </div>
+                <div class="box-body">
+                    <form id="form-promo-list">
+                        <table>
+                            <thead class="thead-default">
+                                <tr class="striped bg-info">
+                                    <th class="col">Main Group</th>                        
+                                    <th class="col">Main Group Desc</th>                        
+                                    <th class="col">Status</th>
+                                    <th class="col" class="w-15">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tb-md tbl-display"></tbody>
+                        </table>
+                    </form>
+                </div>                
+            </div>
+            <div class="tab-pane fade" id="custom-content-below-profile" role="tabpanel" aria-labelledby="custom-content-below-group-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-filter">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                                    <div class="row">
+                                        <div class="col">
+                                            <select class="form-control select2 sel-main-group-filter" style="width: 100%;" ></select> 
+                                        </div>
+                                    </div>                        
+                                </div>
+                                <div class="col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-8 col-lg-8 col-xl-8" >
+                                            <div class="input-group mb-3">
+                                                <input type="text" id="in-search-group" class="form-control rounded-0">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-info btn-flat global-btn-search" id="btn-search-group">Search</button>
+                                                </span>
+                                            </div>                                
+                                        </div>
+                                        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                            <div class="d-inline-flex">
+                                                <div class="">
+                                                    <button type="button" class="btn btn-outline-info btn-flat global-btn-new" id="btn-new-group">
+                                                        <div class="d-inline-flex">
+                                                            <div><i class="fa fa-folder-open"></i></div> 
+                                                            <div>&nbsp;New</div>    
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                                <div class="pl-2">
+                                                    <button type="button" class="btn btn-outline-danger btn-flat global-btn-clear" id="btn-clear-group">
+                                                        <div class="d-inline-flex">
+                                                            <div><i class="fa fa-eraser"></i></div> 
+                                                            <div>&nbsp;Clear</div>    
+                                                        </div>                                                        
+                                                    </button>                                                    
+                                                </div>
+                                            </div>                                            
+                                        </div>   
+                                    </div>                        
+        
+                                </div>
+                            </div>               
+                        </form>
+                    </div>            
+                </div>
+                <div class="box-body">
+                    <form id="form-promo-list">
+                        <table>
+                            <thead class="thead-default">
+                                <tr class="striped bg-info">
+                                    <th class="col">Main Group</th>                        
+                                    <th class="col">Group</th>                        
+                                    <th class="col">Status</th>
+                                    <th class="col" class="w-15">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tb-md tbl-display-group"></tbody>
+                        </table>
+                    </form>
+                </div>    
+            </div>
+            <div class="tab-pane fade" id="custom-content-below-messages" role="tabpanel" aria-labelledby="custom-content-below-group-member-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-group-member">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                                    <div class="row">
+                                        <div class="col">
+                                            <select class="form-control select2 sel-main-group-filter" name="MainGroupName" style="width: 100%;" ></select> 
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-control select2 sel-group-filter" name="GroupName" style="width: 100%;" ></select> 
+                                        </div>                                        
+                                    </div>                        
+                                </div>
+                                <div class="col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-8 col-lg-8 col-xl-8" >
+                                            <div class="input-group mb-3">
+                                                <input type="text" id="in-search-group-member" class="form-control rounded-0">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-info btn-flat global-btn-search" id="btn-search-group-member">Search</button>
+                                                </span>
+                                            </div>                                
+                                        </div>
+                                        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                            <div class="d-inline-flex">
+                                                <div class="">
+                                                    <button type="button" class="btn btn-outline-info btn-flat global-btn-new" id="btn-new-group-member">
+                                                        <div class="d-inline-flex">
+                                                            <div><i class="fa fa-folder-open"></i></div> 
+                                                            <div>&nbsp;New</div>    
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                                <div class="pl-2">
+                                                    <button type="button" class="btn btn-outline-danger btn-flat global-btn-clear" id="btn-clear-group-member">
+                                                        <div class="d-inline-flex">
+                                                            <div><i class="fa fa-eraser"></i></div> 
+                                                            <div>&nbsp;Clear</div>    
+                                                        </div>                                                        
+                                                    </button>                                                    
+                                                </div>
+                                            </div>                                            
+                                        </div>   
+                                    </div>                        
+        
+                                </div>
+                            </div>               
+                        </form>
+                    </div>            
+                </div>
+                <div class="box-body">
+                    <form>
+                        <table>
+                            <thead class="thead-default">
+                                <tr class="striped bg-info">
+                                    <th class="col">Name</th>                        
+                                    <th class="col">Main Group</th>                        
+                                    <th class="col">Group</th>                        
+                                    <th class="col">Login</th>                        
+                                    <th class="col">Effective Date</th>                        
+                                    <th class="col">Expiry Date</th>                        
+                                    <th class="col">Status</th>
+                                    <th class="col" class="w-15">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tb-md tbl-display-group-member"></tbody>
+                        </table>
+                    </form>
+                </div>  
+            </div>
+            <div class="tab-pane fade" id="custom-content-below-settings" role="tabpanel" aria-labelledby="custom-content-below-module-tab">
+            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+            </div>
+        </div>        
+    </div>
+</div>  
+
+<div class="modal fade modal-main-group"data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <i class="fa fa-folder-open"></i> 
+                    <span></span>
+                </h4>
+                <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form-main-group"> 
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" name="MainGroupName" placeholder="Enter ...">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" name="MainGroupDesc" placeholder="Enter ..."></textarea>
+                            </div>                                
+                        </div>
+                    </div>                       
+
+                </form>     
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-danger btn-close" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                <button type="button" class="btn btn-success" id="btn-save"><i class="fa fa-save"></i> Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-group"data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <i class="fa fa-folder-open"></i> 
+                    <span></span>
+                </h4>
+                <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form-group"> 
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Main Group</label>
+                                <select class="form-control select2" style="width: 100%;" name="MainGroupID" id="sel-main-group"></select>
+                            </div>                            
+                            <div class="form-group">
+                                <label>Group Name</label>
+                                <input type="text" class="form-control" name="GroupName" placeholder="Enter ...">
+                            </div>
+                        </div>
+                    </div>                       
+
+                </form>     
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-danger btn-close" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                <button type="button" class="btn btn-success" id="btn-save-group"><i class="fa fa-save"></i> Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-group-member"data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <i class="fa fa-folder-open"></i> 
+                    <span></span>
+                </h4>
+                <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form-group-member"> 
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Main Group</label>
+                                <select class="form-control select2" style="width: 100%;" name="MainGroupID"></select>
+                            </div>                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Group</label>
+                                <select class="form-control select2" style="width: 100%;" name="GroupID"></select>
+                            </div>                            
+                        </div>                        
+                    </div>                       
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control rounded-0" name="SearchData" placeholder="Enter name">
+                                <span class="input-group-append">
+                                    <button type="button" class="btn btn-info btn-flat" id="btn-search-login">Search</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>                    
+                    <table>
+                        <thead class="thead-default">
+                            <tr class="striped bg-info">
+                                <th class="w-5" scope="col">
+                                    <input type="checkbox" id="check-all-list" class="pointer">                                               
+                                </th>                                
+                                <th scope="col">Name</th>                        
+                                <th scope="col">Birthday</th>                        
+                                <th scope="col">Login</th>                        
+                                <th scope="col">Effective Date</th>                        
+                                <th scope="col">Expiry Date</th>                        
+                            </tr>
+                        </thead>
+                        <tbody class="tb-md tbl-display"></tbody>
+                    </table>
+                </form>     
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-danger btn-close" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                <button type="button" class="btn btn-success" id="btn-save-group-member"><i class="fa fa-save"></i> Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<select id="sel-clone-main-group" class="hidden" name="sel-clone-main-group"></select>
+<select id="sel-clone-group" class="hidden1" name="sel-clone-group"></select>
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+
+    <script src="{% static 'js/setup/group/group.js' %}"></script>
+    
+{% endblock %}

@@ -1,0 +1,30 @@
+#profile-blur{
+    width: 200px;
+    height: 170px;
+    position: absolute;
+}
+
+#profile-blur:hover div{
+    background-color: gray;
+    opacity: .4;
+}
+
+#btn-upload{
+    opacity: .9;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 5px;
+    right: 6px;
+    display: none;
+}
+
+#profile-blur:hover #btn-upload{
+    display: block;
+}
+
+#profile-img{
+    width: 200px;
+    height: 170px;
+    object-fit: fill;
+}

@@ -1,0 +1,98 @@
+{% extends "base/app.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/setup/roles/roles.css' %}" />
+<div class="card card-secondary m-4">
+    <div class="card-header">
+        <h3 class="card-title">Manage Permission</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill" href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home" aria-selected="true">User Permission</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="custom-content-below-profile-tab" data-toggle="pill" href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">User Login</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="custom-content-below-tabContent">
+            <div class="tab-pane fade show active" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="form-filter">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="yEMtsdo6BGyUlCoELR2M1GD1ZQiE4nVeMv8bIV70fMgk7BgdAOLKw2v29RTpNavh">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-8 col-lg-9 col-xl-9">
+                                    <div class="input-group mb-3">
+                                        <input type="text" id="in-search" class="form-control rounded-0" placeholder="enter desc">
+                                        <span class="input-group-append">
+                                        <button type="button" class="btn btn-info btn-flat" id="btn-search">Search</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                    <button type="button" class="btn btn-outline-info btn-flat" id="btn-new"><i class="fa fa-folder-open"></i> New</button>
+                                    <button type="button" class="btn btn-outline-danger btn-flat" id="btn-clear"><i class="fa fa-eraser"></i> Clear</button>
+                                </div>
+                            </div>                
+                        </form>
+                    </div>            
+                </div>
+                <div class="box-body">
+                    <form id="form-promo-list">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="yEMtsdo6BGyUlCoELR2M1GD1ZQiE4nVeMv8bIV70fMgk7BgdAOLKw2v29RTpNavh">
+                        <table>
+                            <thead class="thead-default">
+                                <tr class="striped bg-info">
+                                    <th scope="col">Branch</th>                        
+                                    <th scope="col">Main Description</th>                        
+                                    <th scope="col">Status</th>
+                                    <th scope="col" class="w-15">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tb-md" id="tbl-transaction-list">
+                                <tr >
+                                    <td scope="row" data-label="CODE">M1001</td>
+                                    <td scope="row" data-label="DESC">BSED - Social Study</td>
+                                    <td scope="row" data-label="IMG">
+                                        <span class="badge bg-success">Active</span>
+                                    </td>
+                                    <td scope="row" data-label="ACTION" class="w-15">
+                                        <i class="fa fa-edit fa-lg btn-edit" aria-hidden="true" title="click to edit"></i>
+                                    </td>
+                                </tr>
+                                <tr >
+                                    <td scope="row" data-label="CODE">M1002</td>
+                                    <td scope="row" data-label="DESC">BSAT - Aviation Technology</td>
+                                    <td scope="row" data-label="IMG">
+                                        <span class="badge bg-danger">In Active</span>
+                                    </td>
+                                    <td scope="row" data-label="ACTION" class="w-15">
+                                        <i class="fa fa-edit fa-lg btn-edit" aria-hidden="true" title="click to edit"></i>
+                                    </td>
+                                </tr>                                                
+                            </tbody>
+                            
+                        </table>
+        
+                
+                    </form>
+                </div>                
+            </div>
+            <div class="tab-pane fade" id="custom-content-below-profile" role="tabpanel" aria-labelledby="custom-content-below-profile-tab">
+                User Login
+            </div>
+        </div>        
+    </div>
+    <!-- /.card-body -->
+</div>  
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+
+    <script src="{% static 'js/setup/roles/roles.js' %}"></script>
+    
+{% endblock %}

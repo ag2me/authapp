@@ -1,0 +1,10 @@
+.cursor-pointer {
+  cursor: pointer;
+  word-break: break-word;
+}
+.line-through {
+  text-decoration: line-through;
+}
+.w-1 {
+  width: 1%;
+}

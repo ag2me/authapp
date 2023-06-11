@@ -1,0 +1,10 @@
+#tbl-promo-list {
+    opacity: 0;
+    -webkit-transition: opacity .3s ease;
+   -moz-transition: opacity .3s ease;
+     -o-transition: opacity .3s ease;
+        transition: opacity .3s ease;
+}
+.tbl-promo-list-show {
+    opacity: 1!important;
+}

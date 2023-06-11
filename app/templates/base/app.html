@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    {% block stylesheet %}
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="{% static 'vendor/plugins/fontawesome-free/css/all.min.css' %}">
+        <!-- SweetAlert2 -->
+        <link rel="stylesheet" href="{% static 'vendor/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">        
+        <!-- IonIcons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- iCheck -->
+        <link rel="stylesheet" href="{% static 'vendor/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+        <!-- Select2 -->
+        <link rel="stylesheet" href="{% static 'vendor/plugins/select2/css/select2.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">          
+        <!-- iziToast -->
+        <link rel="stylesheet" href="{% static 'vendor/plugins/iziToast/iziToast.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/plugins/iziToast/iziToast.min.css' %}">
+         <!-- Bootstrap Toggle -->
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{% static 'vendor/dist/css/adminlte.min.css' %}">  
+        <!-- Full Calendar -->
+        <link rel="stylesheet" href="{% static 'vendor/plugins/fullcalendar/main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base/app.css' %}">  
+    {% endblock %}
+</head>
+<body class="hold-transition sidebar-mini bg-color">
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                {% comment %} <li class="nav-item d-none d-sm-inline-block">
+                    <a href="#" class="nav-link">Home</a>
+                </li> {% endcomment %}
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="#" class="nav-link"><b></b></a>
+                </li>
+            </ul>
+ 
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <select class="form-control select2" style="width: 100%;" id="sel-nav-branch" name="branch_fk"></select>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                    <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="href-logout" href="#" data-href="{% url 'app:logout' %}" title="Click to logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>                
+                </li>
+            </ul>
+        </nav>
+
+
+          
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="index3.html" class="brand-link">
+            <img src="{% static 'vendor/dist/img/AdminLTELogo.png' %}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">Back Office</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                    <img src="{% static 'app_static/img/django.png' %}" class="img-circle elevation-2" alt="User Image" id='profile-image-circle'>
+                    </div>
+                    <div class="info">
+                    <a href="#" class="d-block">{{ request.session.UserLoginName }} </a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <form id="form-nagivation">
+                        {% csrf_token %}
+                        <ul class="nav nav-pills nav-sidebar flex-column ul-nav-holder" data-widget="treeview" role="menu" data-accordion="false">
+
+                        </ul>
+                    </form>
+                </nav>
+                <!-- /.sidebar-menu --> 
+            </div>
+            <!-- /.sidebar -->
+        </aside>        
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" 
+            data-host="{% if request.is_secure %}https://{{ request.get_host }}{% else %}http://{{ request.get_host }}{% endif %}"
+            data-mid="{{ request.GET.mid }}"
+            data-smid="{{ request.GET.smid }}"
+            data-tmid="{{ request.GET.tmid }}"
+            data-mdesc="{{ request.GET.mdesc }}"
+            data-userlogin-id="{{ request.session.UserLoginID }}"
+            data-branch-id="{{ request.session.DefaultBranchID }}"
+        >
+            <div class="content-header pb-0">
+                <div class="container-fluid">
+                    <div class="row m-0">
+                        <div class="col-sm-12">
+                            <h1 class="m-0"><span id="sp-module-title" class="text-uppercase"></span></h1>
+                        </div><!-- /.col -->
+                        {% comment %} <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                            </ol>
+                        </div><!-- /.col --> {% endcomment %}
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>        
+            {% block content %}{% endblock %} 
+        </div>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+                
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; {% now "Y" %} <a href="#">CITG</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+            </div>
+        </footer>
+
+        {% block javascript %}
+            <!-- REQUIRED SCRIPTS -->
+            <!-- jQuery -->
+            <script src="{% static 'vendor/plugins/jquery/jquery.min.js' %}"></script>
+            <!-- Bootstrap -->
+            <script src="{% static 'vendor/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+            <!-- SweetAlert2 -->
+            <script src="{% static 'vendor/plugins/sweetalert2/sweetalert2.min.js' %}"></script>            
+            <!-- AdminLTE -->
+            <script src="{% static 'vendor/dist/js/adminlte.js' %}"></script>
+            <!-- Select2 -->
+            <script src="{% static 'vendor/plugins/select2/js/select2.full.min.js' %}"></script>   
+             <!-- Inputmask -->
+             <script src="{% static 'vendor/plugins/inputmask/jquery.inputmask.min.js' %}"></script>            
+            <!-- iziToast -->
+            <script src="{% static 'vendor/plugins/iziToast/iziToast.js' %}"></script>      
+            <script src="{% static 'vendor/plugins/iziToast/iziToast.min.js' %}"></script>      
+            <!-- BS Toggle -->
+            <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+            <!-- Moment -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+            <!-- Full Calendar -->
+            <script src="{% static 'vendor/plugins/fullcalendar/main.js' %}"></script>
+            <!-- Custom JS -->
+            <script src="{% static 'js/external/common.js' %}"></script>
+            <script src="{% static 'js/base/app.js' %}"></script>
+
+        {% endblock %}
+    </div>
+    <!-- ./wrapper -->
+    <form class="form-dummy"></form>
+    <div class="mudal"><!-- Place at bottom of page --></div>
+</body>
+</html>
+
+
+    
+	
