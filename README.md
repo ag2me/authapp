@@ -65,12 +65,10 @@
           - pip install virtualenvwrapper-win
        - create virtual using wrapper
          - mkvirtualenv auth_app_3_10
-       - list all virtual environment
-         - lsvirtualenv
        - activate virtual
          - workon auth_app_3_10
-       - install requiremnts
-         - pip install -r requirements
+       - install requirements
+         - pip install -r requirements.txt
        - Install virtualenv and wrapper: First, you need to install the virtualenv and virtualenvwrapper-win packages. You can do this by running the following commands in your command prompt or terminal:
        - pip install virtualenv
        - pip install virtualenvwrapper-win
