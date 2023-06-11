@@ -58,7 +58,7 @@
        * [Click me for the image](https://github.com/ag2me/auth_app/raw/readme/image/authapp%20diagram.bmp)   
    
 * Installation
-    * Clone Repo [:](https://github.com/ag2me/authapp.git) 
+    * [Clone Repo :](https://github.com/ag2me/authapp.git) 
     * Python
        - Version compatible  from 3.9 to latest
        - install virtualenv and wrapper
