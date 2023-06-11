@@ -303,8 +303,265 @@
                                   "DateUpdated": null
                               }
                           ]` 
-      
-      7. Create Signup 
+
+      7. Create Roles
+         - Refers to the process of establishing or defining new roles within a system, roles are used to group users based on their                responsibilities, access levels, or job functions. This includes determining the permissions, privileges, and access rights              associated with each role. Roles can be customized to meet specific organizational needs, such as 'administrator,' 'manager,''user,' or others. This is a POST method where UserGroupName is required.
+          - Method: POST
+          - Parameters:
+            - UserGroupName (string): The desired Name of the group.   
+         - endpoint `api/roles/`
+          - Request
+              `
+                {
+                    "UserGroupName": "Manager"
+                }    
+              `
+          - Response
+              `
+                 {
+                     "UserGroupID": 5,
+                     "UserGroupName": "Manager"
+                 }        
+              `          
+        8.  Get available roles
+            - Refers to the action of retrieving or obtaining a list of roles that are available within a system. This functionality allows users      or administrators to view the various roles that have been defined and can be assigned to users. This is a GET method with no required parameters. If you want to display the GroupName, simply use the 'search' parameter and provide the GroupName as the value. The result is displayed in a similar manner to the 'like' operator.
+            - Method: GET
+            - Parameters:
+               - search (string): This is equivalent to a group name.  
+            - endpoint `api/roles/`
+            - Request `/api/roles/?search=Manager`
+            - Response 
+                     `[
+                         {
+                             "UserGroupID": 3,
+                             "UserGroupCode": "HRMAN",
+                             "UserGroupName": "HR Manager",
+                             "ReferenceTableStatusID": 1,
+                             "DateAdded": "2023-06-09T18:45:44Z",
+                             "DateUpdated": null
+                         },
+                         {
+                             "UserGroupID": 5,
+                             "UserGroupCode": "9989",
+                             "UserGroupName": "Manager",
+                             "ReferenceTableStatusID": 1,
+                             "DateAdded": "2023-06-11T03:54:09Z",
+                             "DateUpdated": null
+                         }
+                     ]`
+            - Request `/api/roles/?`
+            - Response `[
+                          {
+                              "UserGroupID": 1,
+                              "UserGroupCode": "STF",
+                              "UserGroupName": "Associate HR",
+                              "ReferenceTableStatusID": 1,
+                              "DateAdded": "2023-06-09T18:44:08Z",
+                              "DateUpdated": null
+                          },
+                          {
+                              "UserGroupID": 2,
+                              "UserGroupCode": "ADIT",
+                              "UserGroupName": "Admin IT",
+                              "ReferenceTableStatusID": 1,
+                              "DateAdded": "2023-06-09T18:44:53Z",
+                              "DateUpdated": null
+                          },
+                          {
+                              "UserGroupID": 3,
+                              "UserGroupCode": "HRMAN",
+                              "UserGroupName": "HR Manager",
+                              "ReferenceTableStatusID": 1,
+                              "DateAdded": "2023-06-09T18:45:44Z",
+                              "DateUpdated": null
+                          },
+                          {
+                              "UserGroupID": 4,
+                              "UserGroupCode": "515D",
+                              "UserGroupName": "HouseKeeping",
+                              "ReferenceTableStatusID": 1,
+                              "DateAdded": "2023-06-11T03:51:39Z",
+                              "DateUpdated": null
+                          },
+                          {
+                              "UserGroupID": 5,
+                              "UserGroupCode": "9989",
+                              "UserGroupName": "Manager",
+                              "ReferenceTableStatusID": 1,
+                              "DateAdded": "2023-06-11T03:54:09Z",
+                              "DateUpdated": null
+                          }
+                     ]`
+
+     9. Create permission
+        - Refers to the process of setting up a new authorization level within a system, it involves defining specific rights and privileges for a          group or individual. These rights and privileges determine their access and actions within the system. This is a POST method where in you can      add by individual or by group, depends on the neeed. If the permission you created already exists, the system will update the changes you've made. If not, then the system will insert the permission    
+         - endpoint `api/permissions/`
+         - For a group, you need the UserGroupID, which is the ID of the roles created.
+            - Request 
+               `{
+                    "UserGroupID" : 1
+                    ,"SystemID" : 1
+                    ,"BranchID" : 1
+                    ,"ModuleID" : 1
+                    ,"IsSystemListAllowed" : "N"
+                 }`
+
+            - Response
+               `
+                 {
+                     "UserRightID": 2,
+                     "BranchID": 1,
+                     "UserGroupID": 1,
+                     "UserLoginID": null,
+                     "ModuleID": 1,
+                     "IsSystemListAllowed": "N"
+                 }   
+               `
+          - For Individual, you need the UserLoginID which is the ID from the Signup created.
+             - Request
+                 `
+                    {
+                        "UserLoginID" : 8
+                        ,"SystemID" : 1
+                        ,"BranchID": 1
+                        ,"ModuleID": 1
+                        ,"IsSystemListAllowed": "N"
+                    }   
+                 ` 
+              - Response
+                 `
+                     {
+                        "UserRightID": 3,
+                        "SystemID": 1,
+                        "BranchID": 1,
+                        "UserGroupID": null,
+                        "UserLoginID": 8,
+                        "ModuleID": 1,
+                        "IsSystemListAllowed": "N",
+                        "ReferenceTableStatusID": 1,
+                        "DateAdded": "2023-06-11T05:47:46Z",
+                        "DateUpdated": null
+                      } `
+       10. Get available permission 
+            - This refers to the action of retrieving or obtaining a list of permissions available within a system. This functionality allows users or administrators to view the various permissions that have been defined and can be assigned to users or roles. It is a GET method that allows searching by a group or by individual, or displaying the permissions without using `search` as a parameter
+            - endpoint `api/permissions/`
+            - For individuals, simply type the username, and it will return all similar names. This search utilizes the 'like' operator.
+                 - Request 
+                   `/api/permissions/?search=john`
+                 - Response
+                   `[
+                       {
+                           "ModuleID": 1,
+                           "Desc": "johngaring",
+                           "GroupLoginID": 8,
+                           "ModuleName": "Dashboard",
+                           "Controller": "dashboard/"
+                       }
+                   ]` 
+            - For Group, simply type the GroupName, and it will return all similar groupname. Still utilizes the 'like' operator.
+                 - Request `/api/permissions/?search=ass`
+                 - Response 
+                          `[
+                               {
+                                   "ModuleID": 1,
+                                   "Desc": "Associate HR",
+                                   "GroupLoginID": 1,
+                                   "ModuleName": "Dashboard",
+                                   "Controller": "dashboard/"
+                               }
+                           ]`
+             - For not using search as a parameter.
+                  - Request `/api/permissions/`
+                  - Response 
+                            `
+                               [
+                                   {
+                                       "ModuleID": 1,
+                                       "Desc": "Admin IT",
+                                       "GroupLoginID": 2,
+                                       "ModuleName": "Dashboard",
+                                       "Controller": "dashboard/"
+                                   },
+                                   {
+                                       "ModuleID": 1,
+                                       "Desc": "Associate HR",
+                                       "GroupLoginID": 1,
+                                       "ModuleName": "Dashboard",
+                                       "Controller": "dashboard/"
+                                   },
+                                   {
+                                       "ModuleID": 1,
+                                       "Desc": "johngaring",
+                                       "GroupLoginID": 8,
+                                       "ModuleName": "Dashboard",
+                                       "Controller": "dashboard/"
+                                   }
+                               ]           
+                            `
+     11. Assigning of permission to a role. 
+         - Refers to the process of granting specific permissions or access rights to a user or role within a system.This process is                 typically performed using a POST method, where `<int:id>` in the endpoints represents the UserLoginID, which uniquely identifies the user or role. 
+          - endpoints api/roles/<int:id>/permissions/
+          - Request
+              `
+                 {
+                    "UserGroupID" : 1
+                    ,"EffectiveDate": "11/06/2023"
+                 }
+              `
+          - Response
+             `
+                [
+                    {
+                        "UserGroupID": 1,
+                        "UserLoginID": 2,
+                        "UserGroupName": "Associate HR",
+                        "UserLoginName": "CharlsDarwin",
+                        "UserLoginEmail": "niceman@gmail.com"
+                    }
+                ]
+             `
+     12. Get available permission to a certain role
+         - Refers to retrieving the list of permissions available for a specific role in a system. This allows administrators to view and           manage the permissions assigned to that role. This is a GET method where `<int:id>` in the endpoints represents the UserGroupID
+          - endponts api/roles/<int:id>/permissions/
+          - Request `/api/roles/1/permissions/`
+          - Response `[
+                          {
+                              "UserGroupID": 1,
+                              "UserLoginID": 3,
+                              "UserGroupName": "Associate HR",
+                              "UserLoginName": "CharlsDarwin1",
+                              "UserLoginEmail": "nice1man@gmail.com"
+                          },
+                          {
+                              "UserGroupID": 1,
+                              "UserLoginID": 4,
+                              "UserGroupName": "Associate HR",
+                              "UserLoginName": "DayanMae",
+                              "UserLoginEmail": "dayanmae@gmail.com"
+                          },
+                          {
+                              "UserGroupID": 1,
+                              "UserLoginID": 5,
+                              "UserGroupName": "Associate HR",
+                              "UserLoginName": "DayanMae1",
+                              "UserLoginEmail": "dayanma1e@gmail.com"
+                          },
+                          {
+                              "UserGroupID": 1,
+                              "UserLoginID": 6,
+                              "UserGroupName": "Associate HR",
+                              "UserLoginName": "powershell",
+                              "UserLoginEmail": "powershell@gmail.com"
+                          },
+                          {
+                              "UserGroupID": 1,
+                              "UserLoginID": 8,
+                              "UserGroupName": "Associate HR",
+                              "UserLoginName": "johngaring",
+                              "UserLoginEmail": "ag2@gmail.com"
+                          }
+                      ]`
+      13. Create Signup 
           -  Refers to the action of adding a new user account to the system. 
           -  Make sure to provide the username, email, and password of the user:
           - Method: POST
@@ -327,7 +584,7 @@
                   "ReferenceTableStatusID": 1
                 }`
             
-      8. To Login
+      14. To Login
           - To check if a user has been successfully added. 
           - Method: POST
           - Parameters:
@@ -366,326 +623,67 @@
                   ]
                 `
              
-      9. Create Roles
-         - Refers to the process of establishing or defining new roles within a system, roles are used to group users based on their                responsibilities, access levels, or job functions. This includes determining the permissions, privileges, and access rights              associated with each role. Roles can be customized to meet specific organizational needs, such as 'administrator,' 'manager,''user,' or others. This is a POST method where UserGroupName is required.
-          - Method: POST
-          - Parameters:
-            - UserGroupName (string): The desired Name of the group.   
-         - endpoint `api/roles/`
+
+     15. Adding of list of roles to the user 
+        - The process of assigning multiple roles to a user within a system refers to allowing the user to have access to different sets of permissions and privileges associated with each role. Typically, the assignment of roles to a user is performed using a POST method, where int:id in the endpoints represents the UserLoginID that uniquely identifies the user. To assign multiple roles, you should replace int:id with the actual UserLoginID of the user. Additionally, the 'UserGroupID' parameter is used to specify the group to which each role belongs, and the EffectiveDate parameter is used to determine when the assignment of roles becomes valid
+          - endpoints api/users/<int:id>/roles/
+             - `/api/users/2/roles/`
           - Request
-              `
+             `
                 {
-                    "UserGroupName": "Manager"
-                }    
-              `
-          - Response
-              `
-                 {
-                     "UserGroupID": 5,
-                     "UserGroupName": "Manager"
-                 }        
-              `          
-      10.  Get available roles
-        - Refers to the action of retrieving or obtaining a list of roles that are available within a system. This functionality allows users      or administrators to view the various roles that have been defined and can be assigned to users. This is a GET method with no required parameters. If you want to display the GroupName, simply use the 'search' parameter and provide the GroupName as the value. The result is displayed in a similar manner to the 'like' operator.
-         - Method: GET
-         - Parameters:
-            - search (string): This is equivalent to a group name.  
-        - endpoint `api/roles/`
-        - Request `/api/roles/?search=Manager`
-        - Response 
-                  `[
-                      {
-                          "UserGroupID": 3,
-                          "UserGroupCode": "HRMAN",
-                          "UserGroupName": "HR Manager",
-                          "ReferenceTableStatusID": 1,
-                          "DateAdded": "2023-06-09T18:45:44Z",
-                          "DateUpdated": null
-                      },
-                      {
-                          "UserGroupID": 5,
-                          "UserGroupCode": "9989",
-                          "UserGroupName": "Manager",
-                          "ReferenceTableStatusID": 1,
-                          "DateAdded": "2023-06-11T03:54:09Z",
-                          "DateUpdated": null
-                      }
-                  ]`
-         - Request `/api/roles/?`
-         - Response `[
-                       {
-                           "UserGroupID": 1,
-                           "UserGroupCode": "STF",
-                           "UserGroupName": "Associate HR",
-                           "ReferenceTableStatusID": 1,
-                           "DateAdded": "2023-06-09T18:44:08Z",
-                           "DateUpdated": null
-                       },
-                       {
-                           "UserGroupID": 2,
-                           "UserGroupCode": "ADIT",
-                           "UserGroupName": "Admin IT",
-                           "ReferenceTableStatusID": 1,
-                           "DateAdded": "2023-06-09T18:44:53Z",
-                           "DateUpdated": null
-                       },
-                       {
-                           "UserGroupID": 3,
-                           "UserGroupCode": "HRMAN",
-                           "UserGroupName": "HR Manager",
-                           "ReferenceTableStatusID": 1,
-                           "DateAdded": "2023-06-09T18:45:44Z",
-                           "DateUpdated": null
-                       },
-                       {
-                           "UserGroupID": 4,
-                           "UserGroupCode": "515D",
-                           "UserGroupName": "HouseKeeping",
-                           "ReferenceTableStatusID": 1,
-                           "DateAdded": "2023-06-11T03:51:39Z",
-                           "DateUpdated": null
-                       },
-                       {
-                           "UserGroupID": 5,
-                           "UserGroupCode": "9989",
-                           "UserGroupName": "Manager",
-                           "ReferenceTableStatusID": 1,
-                           "DateAdded": "2023-06-11T03:54:09Z",
-                           "DateUpdated": null
-                       }
-                  ]`
-      
-
-
-11. Create permission
-   - Refers to the process of setting up a new authorization level within a system, it involves defining specific rights and privileges for a          group or individual. These rights and privileges determine their access and actions within the system. This is a POST method where in you can      add by individual or by group, depends on the neeed. If the permission you created already exists, the system will update the changes you've made. If not, then the system will insert the permission    
-     - endpoint `api/permissions/`
-     - For a group, you need the UserGroupID, which is the ID of the roles created.
-       - Request 
-          `{
-               "UserGroupID" : 1
-               ,"SystemID" : 1
-               ,"BranchID" : 1
-               ,"ModuleID" : 1
-               ,"IsSystemListAllowed" : "N"
-            }`
-          
-       - Response
-          `
-            {
-                "UserRightID": 2,
-                "BranchID": 1,
-                "UserGroupID": 1,
-                "UserLoginID": null,
-                "ModuleID": 1,
-                "IsSystemListAllowed": "N"
-            }   
-          `
-     - For Individual, you need the UserLoginID which is the ID from the Signup created.
-        - Request
-            `
-               {
-                   "UserLoginID" : 8
-                   ,"SystemID" : 1
-                   ,"BranchID": 1
-                   ,"ModuleID": 1
-                   ,"IsSystemListAllowed": "N"
-               }   
-            ` 
-         - Response
-            `
-                {
-                   "UserRightID": 3,
-                   "SystemID": 1,
-                   "BranchID": 1,
-                   "UserGroupID": null,
-                   "UserLoginID": 8,
-                   "ModuleID": 1,
-                   "IsSystemListAllowed": "N",
-                   "ReferenceTableStatusID": 1,
-                   "DateAdded": "2023-06-11T05:47:46Z",
-                   "DateUpdated": null
-                 }          
-            `
-12 Get available permission 
-   - This refers to the action of retrieving or obtaining a list of permissions available within a system. This functionality allows users or administrators to view the various permissions that have been defined and can be assigned to users or roles. It is a GET method that allows searching by a group or by individual, or displaying the permissions without using `search` as a parameter
-     - endpoint `api/permissions/`
-     - For individuals, simply type the username, and it will return all similar names. This search utilizes the 'like' operator.
-          - Request 
-            `/api/permissions/?search=john`
-          - Response
-            `[
-                {
-                    "ModuleID": 1,
-                    "Desc": "johngaring",
-                    "GroupLoginID": 8,
-                    "ModuleName": "Dashboard",
-                    "Controller": "dashboard/"
+                   "UserGroupID" : 1
+                   ,"EffectiveDate": "11/06/2023"
                 }
-            ]` 
-     - For Group, simply type the GroupName, and it will return all similar groupname. Still utilizes the 'like' operator.
-          - Request `/api/permissions/?search=ass`
-          - Response 
-                   `[
+             `
+          - Response
+             `
+                [
+                    {
+                        "UserGroupID": 1,
+                        "UserLoginID": 2,
+                        "UserGroupName": "Associate HR",
+                        "UserLoginName": "CharlsDarwin",
+                        "UserLoginEmail": "niceman@gmail.com"
+                    }
+                ]
+             `
+     16. Getting the list of roles assigned to a user
+        - Refers to the action of retrieving the roles that have been added or assigned to a specific user within a system. This functionality allows administrators or authorized individuals to view the roles associated with a particular user. This is accomplished using a GET method, where <int:id> in the endpoints represents the UserLoginID, which uniquely identifies the user.
+          - endpoints api/users/<int:id>/roles/
+          - Request `/api/users/8/roles/`
+          - Response ` 
+                      [
+                          {
+                              "UserGroupID": 1,
+                              "UserLoginID": 8,
+                              "UserGroupName": "Associate HR",
+                              "UserLoginName": "johngaring",
+                              "UserLoginEmail": "ag2@gmail.com"
+                          },
+                          {
+                              "UserGroupID": 5,
+                              "UserLoginID": 8,
+                              "UserGroupName": "Manager",
+                              "UserLoginName": "johngaring",
+                              "UserLoginEmail": "ag2@gmail.com"
+                          }
+                      ]
+                   `
+     17. Get list of permissions assigned to a user
+        - Refers to the process of retrieving a collection of permissions that have been granted or assigned to a specific user within a  system. Permissions dictate what actions a user is allowed to access, modify, or execute specific functions. This is a GET method where `<int:id>` in the endpoints represents the UserLoginID.
+          - endpoint api/users/<int:id>/permissions/  
+          - Request `api/users/2/permissions/`
+          - Response `[
                         {
                             "ModuleID": 1,
-                            "Desc": "Associate HR",
-                            "GroupLoginID": 1,
+                            "Desc": "CharlsDarwin",
+                            "GroupLoginID": 2,
                             "ModuleName": "Dashboard",
-                            "Controller": "dashboard/"
+                            "Controller": "dashboard/",
+                            "ModuleDescription": null,
+                            "IsComponent": "N"
                         }
                     ]`
-      - For not using search as a parameter.
-           - Request `/api/permissions/`
-           - Response 
-                     `
-                        [
-                            {
-                                "ModuleID": 1,
-                                "Desc": "Admin IT",
-                                "GroupLoginID": 2,
-                                "ModuleName": "Dashboard",
-                                "Controller": "dashboard/"
-                            },
-                            {
-                                "ModuleID": 1,
-                                "Desc": "Associate HR",
-                                "GroupLoginID": 1,
-                                "ModuleName": "Dashboard",
-                                "Controller": "dashboard/"
-                            },
-                            {
-                                "ModuleID": 1,
-                                "Desc": "johngaring",
-                                "GroupLoginID": 8,
-                                "ModuleName": "Dashboard",
-                                "Controller": "dashboard/"
-                            }
-                        ]           
-                     `
-13. Assigning of permission to a role. 
-   - Refers to the process of granting specific permissions or access rights to a user or role within a system.This process is                 typically performed using a POST method, where `<int:id>` in the endpoints represents the UserLoginID, which uniquely identifies the user or role. 
-     - endpoints api/roles/<int:id>/permissions/
-     - Request
-         `
-            {
-               "UserGroupID" : 1
-               ,"EffectiveDate": "11/06/2023"
-            }
-         `
-     - Response
-        `
-           [
-               {
-                   "UserGroupID": 1,
-                   "UserLoginID": 2,
-                   "UserGroupName": "Associate HR",
-                   "UserLoginName": "CharlsDarwin",
-                   "UserLoginEmail": "niceman@gmail.com"
-               }
-           ]
-        `
-14 Get available permission to a certain role
-   - Refers to retrieving the list of permissions available for a specific role in a system. This allows administrators to view and           manage the permissions assigned to that role. This is a GET method where `<int:id>` in the endpoints represents the UserGroupID
-     - endponts api/roles/<int:id>/permissions/
-     - Request `/api/roles/1/permissions/`
-     - Response `[
-                     {
-                         "UserGroupID": 1,
-                         "UserLoginID": 3,
-                         "UserGroupName": "Associate HR",
-                         "UserLoginName": "CharlsDarwin1",
-                         "UserLoginEmail": "nice1man@gmail.com"
-                     },
-                     {
-                         "UserGroupID": 1,
-                         "UserLoginID": 4,
-                         "UserGroupName": "Associate HR",
-                         "UserLoginName": "DayanMae",
-                         "UserLoginEmail": "dayanmae@gmail.com"
-                     },
-                     {
-                         "UserGroupID": 1,
-                         "UserLoginID": 5,
-                         "UserGroupName": "Associate HR",
-                         "UserLoginName": "DayanMae1",
-                         "UserLoginEmail": "dayanma1e@gmail.com"
-                     },
-                     {
-                         "UserGroupID": 1,
-                         "UserLoginID": 6,
-                         "UserGroupName": "Associate HR",
-                         "UserLoginName": "powershell",
-                         "UserLoginEmail": "powershell@gmail.com"
-                     },
-                     {
-                         "UserGroupID": 1,
-                         "UserLoginID": 8,
-                         "UserGroupName": "Associate HR",
-                         "UserLoginName": "johngaring",
-                         "UserLoginEmail": "ag2@gmail.com"
-                     }
-                 ]`
-15. Adding of list of roles to the user 
-   - The process of assigning multiple roles to a user within a system refers to allowing the user to have access to different sets of permissions and privileges associated with each role. Typically, the assignment of roles to a user is performed using a POST method, where int:id in the endpoints represents the UserLoginID that uniquely identifies the user. To assign multiple roles, you should replace int:id with the actual UserLoginID of the user. Additionally, the 'UserGroupID' parameter is used to specify the group to which each role belongs, and the EffectiveDate parameter is used to determine when the assignment of roles becomes valid
-     - endpoints api/users/<int:id>/roles/
-        - `/api/users/2/roles/`
-     - Request
-        `
-           {
-              "UserGroupID" : 1
-              ,"EffectiveDate": "11/06/2023"
-           }
-        `
-     - Response
-        `
-           [
-               {
-                   "UserGroupID": 1,
-                   "UserLoginID": 2,
-                   "UserGroupName": "Associate HR",
-                   "UserLoginName": "CharlsDarwin",
-                   "UserLoginEmail": "niceman@gmail.com"
-               }
-           ]
-        `
-16. Getting the list of roles assigned to a user
-   - Refers to the action of retrieving the roles that have been added or assigned to a specific user within a system. This functionality allows administrators or authorized individuals to view the roles associated with a particular user. This is accomplished using a GET method, where <int:id> in the endpoints represents the UserLoginID, which uniquely identifies the user.
-     - endpoints api/users/<int:id>/roles/
-     - Request `/api/users/8/roles/`
-     - Response ` 
-                 [
-                     {
-                         "UserGroupID": 1,
-                         "UserLoginID": 8,
-                         "UserGroupName": "Associate HR",
-                         "UserLoginName": "johngaring",
-                         "UserLoginEmail": "ag2@gmail.com"
-                     },
-                     {
-                         "UserGroupID": 5,
-                         "UserLoginID": 8,
-                         "UserGroupName": "Manager",
-                         "UserLoginName": "johngaring",
-                         "UserLoginEmail": "ag2@gmail.com"
-                     }
-                 ]
-              `
-17. Get list of permissions assigned to a user
-   - Refers to the process of retrieving a collection of permissions that have been granted or assigned to a specific user within a  system. Permissions dictate what actions a user is allowed to access, modify, or execute specific functions. This is a GET method where `<int:id>` in the endpoints represents the UserLoginID.
-     - endpoint api/users/<int:id>/permissions/  
-     - Request `api/users/2/permissions/`
-     - Response `[
-                   {
-                       "ModuleID": 1,
-                       "Desc": "CharlsDarwin",
-                       "GroupLoginID": 2,
-                       "ModuleName": "Dashboard",
-                       "Controller": "dashboard/",
-                       "ModuleDescription": null,
-                       "IsComponent": "N"
-                   }
-               ]`
 
 # HOW TO USE UNIT TEST
 * python manage.py test
