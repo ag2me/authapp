@@ -26,21 +26,7 @@ class View(TemplateView):
         else:    
             return super().get(request, *args, **kwargs)    
 
-class Transact(viewsets.ViewSet):
-    '''
-        Author: Armando Garing II
-        Date Created: October 16, 2022
-        Purpose: Responsible for all transaction
-    '''     
 
-    @staticmethod
-    def customer_address(request):
-        result_data = {}        
-        try:
-
-            return Response(result_data, status=status.HTTP_201_CREATED)
-        except:
-            return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
         
 

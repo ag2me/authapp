@@ -13,7 +13,7 @@ class M_Reference(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
     
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_Reference'
         
     def __str__(self):
@@ -29,7 +29,7 @@ class M_Branch(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
     
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_Branch'
         
     def __str__(self):
@@ -45,7 +45,7 @@ class M_EntityName(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_EntityName'
         
     def __str__(self):
@@ -61,7 +61,7 @@ class M_Entity(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_Entity'
         
     def __str__(self):
@@ -78,7 +78,7 @@ class M_System(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_System'
         
     def __str__(self):
@@ -93,7 +93,7 @@ class M_UserGroup(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_UserGroup'
         
     def __str__(self):
@@ -110,7 +110,7 @@ class M_UserGroupMember(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_UserGroupMember'
         
     def __str__(self):
@@ -126,7 +126,7 @@ class M_UserLogin(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_UserLogin'
         
     def __str__(self):
@@ -141,7 +141,7 @@ class M_UserMainGroup(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_UserMainGroup'
         
     def __str__(self):
@@ -162,7 +162,7 @@ class M_UserModule(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_UserModule'
         
     def __str__(self):
@@ -181,7 +181,7 @@ class M_UserRights(models.Model):
     DateUpdated = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'M_UserRights'
         
     def __str__(self):

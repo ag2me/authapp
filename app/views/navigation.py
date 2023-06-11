@@ -14,13 +14,11 @@ class NavigationList(View):
 
             data = json.dumps(request.POST)
             context = json.loads(data)
-            context['ModuleParentID'] = Repeated.empty_to_null(request.POST.get('ModuleParentID'))   
+            context['ModuleParentID'] = request.POST.get('ModuleParentID')   
             context['UserLoginID'] = request.session.get('UserLoginID')   
             context['BranchID'] = request.session.get('DefaultBranchID')   
-            # context['SystemID'] = request.session.get('SystemID')   
             context['SystemID'] = request.POST.get('SystemID')
             context['Flag'] = 1
-            # context['Flag'] = Repeated.empty_to_null(request.POST.get('Flag'))   
             context['SPName'] = 'navigation' 
 
             list_data = db.profiles(context)

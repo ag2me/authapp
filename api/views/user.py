@@ -6,10 +6,7 @@ from django.conf import settings
 
 from app.helpers.dbs import DB
 from api.libraries.user_lib import User
-from api.helpers.authentication import LegacyJWTAuthentication
-from app.libraries.stored_procedure_lib import SP
 from app.helpers.app_exception import AppException
-from app.helpers.common import Repeated
 from system_settings.constant import NO_RECORD_FOUND
 
 import json

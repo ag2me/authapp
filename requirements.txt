@@ -2,8 +2,6 @@ django
 djangorestframework
 mysqlclient
 requests
-flake8
-autopep8
 django-cors-headers
 djangorestframework-simplejwt
 
