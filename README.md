@@ -298,7 +298,9 @@
            - HTTP Method: GET
            - search (string): This parameter represents the branch name to search for.
              - Request `/api/modules/?search=trans`
-             - Response `[
+             - Response 
+             - ```json
+                [
                                {
                                    "ModuleID": 2,
                                    "SystemID": 1,
@@ -313,10 +315,13 @@
                                    "DateAdded": "2023-06-11T11:13:29Z",
                                    "DateUpdated": null
                                }
-                           ]`
+                ]
+              ```
            - To display all modules
                - Request `/api/modules/`
-               - Response `[
+               - Response 
+               - ```json
+                    [
                               {
                                   "ModuleID": 1,
                                   "SystemID": 1,
@@ -345,7 +350,8 @@
                                   "DateAdded": "2023-06-11T11:13:29Z",
                                   "DateUpdated": null
                               }
-                          ]` 
+                    ]
+                 ``` 
 
       7. Create Roles
          - Refers to the process of establishing or defining new roles within a system, roles are used to group users based on their                responsibilities, access levels, or job functions. This includes determining the permissions, privileges, and access rights              associated with each role. Roles can be customized to meet specific organizational needs, such as 'administrator,' 'manager,''user,' or others. This is a POST method where UserGroupName is required.
@@ -354,18 +360,18 @@
             - UserGroupName (string): The desired Name of the group.   
          - endpoint `/api/roles/`
           - Request
-              `
+          - ```json
                 {
                     "UserGroupName": "Manager"
                 }    
-              `
+            ```
           - Response
-              `
-                 {
+          - ```json
+                {
                      "UserGroupID": 5,
                      "UserGroupName": "Manager"
-                 }        
-              `          
+                }        
+            ```          
         8.  Get available roles
             - Refers to the action of retrieving or obtaining a list of roles that are available within a system. This functionality allows users      or administrators to view the various roles that have been defined and can be assigned to users. This is a GET method with no required parameters. If you want to display the GroupName, simply use the 'search' parameter and provide the GroupName as the value. The result is displayed in a similar manner to the 'like' operator.
             - Method: GET
