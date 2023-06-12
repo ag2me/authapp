@@ -9,26 +9,26 @@
         - Define different roles such as administrator, manager, or regular user.
         - Assign specific permissions to each role based on their responsibilities and access requirements.
         - Users are granted access to modules and components based on their assigned role.
-    * Granular Permissions:
+    * _Granular Permissions:_
         - A very detail permissions that control access at the feature or data level.
         - Permissions can be assigned to a group or individual.
         - Allows for precise control over what each user or role can do within the system.
-     * Resource Protection:
+     * _Resource Protection:_
         - Protect sensitive data and functionality by allowing access only to authorized users.
         - Control access to specific features, modules, or sections within the application.
         - Prevent unauthorized users from modifying critical settings or accessing restricted information.
-     * Flexible Configuration:
+     * _Flexible Configuration:_
         - Allow administrators to customize role definitions, permissions, and access rules.
         - Support dynamic updates to role and permission configurations without requiring code changes.
-      * Scalability and Performance:
+      * _Scalability and Performance:_
         - The system design handles a large number of users and roles efficiently.
         - The system can scale to ensure efficient performance and handle increasing access demands as the user base grows.
-     * Support multiple entities: 
+     * _Support multiple entities:_ 
        - The system is designed to handle multiple entities, including organizations, companies, or customers.
        - The system is capable of storing and managing data for each entity separately, ensuring that the information is isolated and organized for each entity.
-     * Support multiple branches per entity: 
+     * _Support multiple branches per entity:_ 
        - In addition to handling multiple entities, the system is also capable of managing multiple branches or divisions within each entity. This functionality enables the establishment of hierarchical structures within the system, facilitating proper organization and management of different branches.
-    * Support access for groups and individuals: 
+    * _Support access for groups and individuals:_ 
       - The system provides flexible access control mechanisms to manage permissions for both groups and individual users. This ensures that different groups of users and individual users have varying levels of access rights based on their roles and responsibilities within the system. 
       - The access control mechanism ensures that only authorized individuals or groups can perform specific actions or access designated information. Unauthorized access is prevented, maintaining the security and integrity of the system.
   
