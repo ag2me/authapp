@@ -1,78 +1,79 @@
 # LOGIN ROLES, ACCESS AND PERMISSION
 
-* Introduction
-  * The "Login Roles, Access, and Permissions" project provides a secure user authorization system with role-based access control and granular permissions. It enables administrators to define roles and assign permissions to users based on their roles. This allows organizations to manage user access effectively, ensuring authorized users can access specific resources = modules and components. 
+* **INTRODUCTION**
+  * The "Login Roles, Access, and Permissions" project provides a secure user authorization system with role-based access control and granular permissions. It enables administrators to define roles and assign permissions to users based on their roles. This allows organizations to manage user access effectively, ensuring authorized users can access specific modules and components. 
  
-* Features
-  * Features of the project include:
-    * Role-Based Access Control (RBAC):
+* **FEATURES**
+  * **Features of the project include:**
+    * _Role-Based Access Control (RBAC):_
         - Define different roles such as administrator, manager, or regular user.
         - Assign specific permissions to each role based on their responsibilities and access requirements.
         - Users are granted access to modules and components based on their assigned role.
-    * Granular Permissions:
+    * _Granular Permissions:_
         - A very detail permissions that control access at the feature or data level.
         - Permissions can be assigned to a group or individual.
         - Allows for precise control over what each user or role can do within the system.
-     * Resource Protection:
+     * _Resource Protection:_
         - Protect sensitive data and functionality by allowing access only to authorized users.
         - Control access to specific features, modules, or sections within the application.
         - Prevent unauthorized users from modifying critical settings or accessing restricted information.
-     * Flexible Configuration:
+     * _Flexible Configuration:_
         - Allow administrators to customize role definitions, permissions, and access rules.
         - Support dynamic updates to role and permission configurations without requiring code changes.
-      * Scalability and Performance:
-        - Design the system to handle a large number of users and roles efficiently.
-        - Ensure the system can scale with the growing user base and increasing access demands.
-     * Support multiple entities: 
-       - The system should be designed to handle multiple entities, such as organizations, companies, or customers. 
-       - It should be able to store and manage data for each entity separately, ensuring that the information is isolated and organized.
-     * Support multiple branches per entity: 
-       - In addition to handling multiple entities, the system should also be capable of managing multiple branches or divisions within each entity. This enables hierarchical structures within the system and allows for proper organization and management of different branches.
-    * Support access for groups and individuals: 
-      - The system should provide flexible access control mechanisms to manage permissions for both groups and individual users. This means that different groups of users or individual users should have different levels of access rights based on their roles and responsibilities within the system. Access control ensures that only authorized individuals or groups can perform certain actions or access specific information.
+      * _Scalability and Performance:_
+        - The system design handles a large number of users and roles efficiently.
+        - The system can scale to ensure efficient performance and handle increasing access demands as the user base grows.
+     * _Support multiple entities:_ 
+       - The system is designed to handle multiple entities, including organizations, companies, or customers.
+       - The system is capable of storing and managing data for each entity separately, ensuring that the information is isolated and organized for each entity.
+     * _Support multiple branches per entity:_ 
+       - In addition to handling multiple entities, the system is also capable of managing multiple branches or divisions within each entity. This functionality enables the establishment of hierarchical structures within the system, facilitating proper organization and management of different branches.
+    * _Support access for groups and individuals:_ 
+      - The system provides flexible access control mechanisms to manage permissions for both groups and individual users. This ensures that different groups of users and individual users have varying levels of access rights based on their roles and responsibilities within the system. 
+      - The access control mechanism ensures that only authorized individuals or groups can perform specific actions or access designated information. Unauthorized access is prevented, maintaining the security and integrity of the system.
   
-* Database 
-   *  The structure accommodates a wide range of permissions, roles, and users per entity, per branch, and per system. It can dynamically and easily add both individual and group entities. 
-   * Used MYSQL
-   * Tables
-     * M_EntityName: 
+* **DATABASE** 
+   *  **The structure accommodates a wide range of permissions, roles, and users per entity, per branch, and per system. It can dynamically and easily add both individual and group entities.** 
+   * **MYSQL**
+   * **Tables**
+     * _M_EntityName:_ 
        - This represents the list of companies using the system. It stores information about the companies that are utilizing the system.
-     * M_System: 
+     * _M_System:_ 
        - This represents the list of systems that a company is using. It provides details about the various systems employed by a company.
-     * M_Branch: 
+     * _M_Branch:_ 
        - This represents the list of branches of the companies. It stores information about the different branches or divisions within a company.
-     * M_UserLogin: 
+     * _M_UserLogin:_ 
         - This is where user information is stored and managed. It includes details about the users who have access to the system.
-     * M_UserModule:
+     * _M_UserModule:_
         - This represents the modules or tasks within the system. It defines the specific functionalities or tasks that users can perform.
-     * M_Entity: 
+     * _M_Entity:_ 
         - This represents the connection between a user and the company they belong to. It establishes the relationship between a user and the company they are associated with.
-     * M_UserGroup: 
+     * _M_UserGroup:_ 
          - This is where permissions are assigned. It defines different groups of users and the permissions associated with each group.
-     * M_UserRights: 
+     * _M_UserRights:_ 
          - This is where the assignment of permissions to roles takes place. It specifies the permissions that are granted to specific roles within the system.
-     * M_UserGroupMember: 
+     * _M_UserGroupMember:_ 
          - This represents the assignment of users to specific roles and permissions. It establishes which users are assigned to which user groups and their corresponding permissions.
          
-   * Diagram
+   * **Diagram**
        * [Click me for the image](https://github.com/ag2me/authapp/blob/main/app/static/img/erd.jpg)   
    
-* Installation
-    * [Clone Repo :](https://github.com/ag2me/authapp.git) 
-    * Python
+* **INSTALLATION**
+    * **[Clone Repo :](https://github.com/ag2me/authapp.git)** 
+    * **Python**
        - Version compatible  from 3.9 to latest
-       - install virtualenv and wrapper
+       - Install virtualenv and wrapper
           - pip install virtualenv
           - pip install virtualenvwrapper-win
-       - create virtual using wrapper
+       - Create virtual using wrapper
          - mkvirtualenv auth_app_3_10
-       - activate virtual
+       - Activate virtual
          - workon auth_app_3_10
-       - install requirements
+       - Install requirements
          - pip install -r requirements.txt
-  * Database 
+  * **Database** 
        - Download and Install MySQL Server (MariaDB). 
-       - Please see the screenshot [LINK](https://github.com/ag2me/auth_app/raw/readme/image/sqldump.JPG)
+       - Please see the screenshot [LINK](https://github.com/ag2me/authapp/blob/main/app/static/img/sql-dump-path.jpg)
        - Create a database named 'authapp' and then restore the dump file to the created database.
        - If you encounter an error like:
                 `{
@@ -80,13 +81,32 @@
                     "message": "(1449, \"The user specified as a definer ('localhost'@'%') does not exist\")"
                 }`
           while using the endpoints, simply add the user 'localhost' to the database SQL login.
-   * EndPoints tools
+   * **EndPoints Tools**
        - Download and Install postman
        - Create a collection name Auth App.
        - Create an 'Add' request for each endpoint in the API.    
-    * Unit Test 
+    * **Unit Test** 
        - Used django built-in test case
-       
+      
+ # API
+   * POST `/api/branches/` Create branch 
+   * GET `/api/branches/` Get list of branch 
+   * POST `/api/systems/` Create system 
+   * GET `/api/systems/` Get list of system 
+   * POST `/api/modules/` Create module 
+   * GET `/api/modules/` Get list of  module 
+   * POST `/api/roles/`  Create roles 
+   * GET `/api/roles/` Get available roles
+   * POST `/api/permissions/` Create permission 
+   * GET `/api/permissions/` Get available permission 
+   * POST `/api/roles/<int:id>/permissions/` Assigning of permission to a role 
+   * GET `/api/roles/1/permissions/` Get available permission to a certain role 
+   * POST `/api/signup/` Create signup 
+   * POST `/api/login/` To login 
+   * POST `/api/users/<int:id>/roles/` Adding of list of roles to the user 
+   * GET `/api/users/<int:id>/roles/` Getting the list of roles assigned to a user 
+   * GET `/api/users/<int:id>/permissions/`  Get list of permissions assigned to a user  
+    
  # HOW TO USE API
    * After completing the installations, we can now begin using the system.
       1. Create the Branch.        
@@ -309,7 +329,7 @@
           - Method: POST
           - Parameters:
             - UserGroupName (string): The desired Name of the group.   
-         - endpoint `api/roles/`
+         - endpoint `/api/roles/`
           - Request
               `
                 {
@@ -328,7 +348,7 @@
             - Method: GET
             - Parameters:
                - search (string): This is equivalent to a group name.  
-            - endpoint `api/roles/`
+            - endpoint `/api/roles/`
             - Request `/api/roles/?search=Manager`
             - Response 
                      `[
@@ -395,7 +415,7 @@
 
      9. Create permission
         - Refers to the process of setting up a new authorization level within a system, it involves defining specific rights and privileges for a          group or individual. These rights and privileges determine their access and actions within the system. This is a POST method where in you can      add by individual or by group, depends on the neeed. If the permission you created already exists, the system will update the changes you've made. If not, then the system will insert the permission    
-         - endpoint `api/permissions/`
+         - endpoint `/api/permissions/`
          - For a group, you need the UserGroupID, which is the ID of the roles created.
             - Request 
                `{
@@ -444,7 +464,7 @@
                       } `
        10. Get available permission 
             - This refers to the action of retrieving or obtaining a list of permissions available within a system. This functionality allows users or administrators to view the various permissions that have been defined and can be assigned to users or roles. It is a GET method that allows searching by a group or by individual, or displaying the permissions without using `search` as a parameter
-            - endpoint `api/permissions/`
+            - endpoint `/api/permissions/`
             - For individuals, simply type the username, and it will return all similar names. This search utilizes the 'like' operator.
                  - Request 
                    `/api/permissions/?search=john`
@@ -500,8 +520,8 @@
                             `
      11. Assigning of permission to a role. 
          - Refers to the process of granting specific permissions or access rights to a user or role within a system.This process is                 typically performed using a POST method, where `<int:id>` in the endpoints represents the UserLoginID, which uniquely identifies the user or role. 
-          - endpoints api/roles/<int:id>/permissions/
-          - Request
+          - endpoints `/api/roles/<int:id>/permissions/`
+          - Request 
               `
                  {
                     "UserGroupID" : 1
@@ -569,7 +589,7 @@
             - username (string): The desired username for the user.
             - email (string): The email address of the user.
             - password (string): The password for the user's account.
-          - endpoint `api/signup`
+          - endpoint `/api/signup`
           - Request
                 `{
                  "username": "johngaring"
@@ -590,8 +610,7 @@
           - Parameters:
              - username (string): This is the username or email that the user provided during the signup process.
               - password (string): This is the password that the user set during the signup process.
-             - endpoint `api/login/`
-          - endpoint `api/login/`
+          - endpoint `/api/login/`
           - Request  
                  `
                    {
@@ -626,7 +645,7 @@
 
      15. Adding of list of roles to the user 
         - The process of assigning multiple roles to a user within a system refers to allowing the user to have access to different sets of permissions and privileges associated with each role. Typically, the assignment of roles to a user is performed using a POST method, where int:id in the endpoints represents the UserLoginID that uniquely identifies the user. To assign multiple roles, you should replace int:id with the actual UserLoginID of the user. Additionally, the 'UserGroupID' parameter is used to specify the group to which each role belongs, and the EffectiveDate parameter is used to determine when the assignment of roles becomes valid
-          - endpoints api/users/<int:id>/roles/
+          - endpoints `/api/users/<int:id>/roles/`
              - `/api/users/2/roles/`
           - Request
              `
@@ -649,7 +668,7 @@
              `
      16. Getting the list of roles assigned to a user
         - Refers to the action of retrieving the roles that have been added or assigned to a specific user within a system. This functionality allows administrators or authorized individuals to view the roles associated with a particular user. This is accomplished using a GET method, where <int:id> in the endpoints represents the UserLoginID, which uniquely identifies the user.
-          - endpoints api/users/<int:id>/roles/
+          - endpoints `/api/users/<int:id>/roles/`
           - Request `/api/users/8/roles/`
           - Response ` 
                       [
@@ -671,7 +690,7 @@
                    `
      17. Get list of permissions assigned to a user
         - Refers to the process of retrieving a collection of permissions that have been granted or assigned to a specific user within a  system. Permissions dictate what actions a user is allowed to access, modify, or execute specific functions. This is a GET method where `<int:id>` in the endpoints represents the UserLoginID.
-          - endpoint api/users/<int:id>/permissions/  
+          - endpoint `/api/users/<int:id>/permissions/`
           - Request `api/users/2/permissions/`
           - Response `[
                         {
