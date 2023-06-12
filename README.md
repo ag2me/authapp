@@ -93,19 +93,18 @@
    * GET [`/api/branches/`](#list-branch) Get list of branch 
    * POST [`/api/systems/`](#create-system) Create system 
    * GET [`/api/systems/`](#list-system) Get list of system 
-   * POST `/api/modules/` Create module 
-   * GET `/api/modules/` Get list of  module 
-   * POST `/api/roles/`  Create roles 
-   * GET `/api/roles/` Get available roles
-   * POST `/api/permissions/` Create permission 
-   * GET `/api/permissions/` Get available permission 
-   * POST `/api/roles/<int:id>/permissions/` Assigning of permission to a role 
-   * GET `/api/roles/1/permissions/` Get available permission to a certain role 
-   * POST `/api/signup/` Create signup 
-   * POST `/api/login/` To login 
-   * POST `/api/users/<int:id>/roles/` Adding of list of roles to the user 
-   * GET `/api/users/<int:id>/roles/` Getting the list of roles assigned to a user 
-   * GET `/api/users/<int:id>/permissions/`  Get list of permissions assigned to a user  
+   * POST [`/api/modules/`](#create-module) Create module 
+   * GET [`/api/modules/`](#list-module) Get list of  module 
+   * POST [`/api/roles/`](#create-role) Create roles 
+   * GET [`/api/roles/`](#list-role) Get available roles
+   * POST [`/api/permissions/`](#create-permission) Create permission 
+   * GET [`/api/permissions/`](#list-permission) Get available permission 
+   * POST [`/api/roles/<int:id>/permissions/`](#roles-permissions) Assigning of permission to a role 
+   * GET [`/api/roles/1/permissions/`](#list-roles-permissions) Get available permission to a certain role 
+   * POST [`/api/signup/`](#create-signup) Create signup 
+   * POST [`/api/login/`](#login) To login 
+   * GET [`/api/users/<int:id>/roles/`](#users-roles) Getting the list of roles assigned to a user 
+   * GET [`/api/users/<int:id>/permissions/`](#users-permissions)  Get list of permissions assigned to a user  
     
  # HOW TO USE API
    * After completing the installations, we can now begin using the system.
@@ -254,7 +253,7 @@
                               }
                     ]
                  ``` 
-      5. Create Module 
+      5. <a name="create-module">Create Module.</a> 
           - Refers to the Modules used for the system. 
           - HTTP Method: POST
           - parameters:
@@ -293,7 +292,7 @@
                          "IsDefaultSystemController": "N"
                 }
              ```
-      6. To verify the modules added.
+      6. <a name="list-module">To verify the modules added.</a>
            * The statement describes a GET method used to retrieve modules. The parameter used is search, which allows for filtering the modules based on their names using a "like" operator.
            - HTTP Method: GET
            - search (string): This parameter represents the branch name to search for.
@@ -353,7 +352,7 @@
                     ]
                  ``` 
 
-      7. Create Roles
+      7. <a name="create-role">Create Roles</a>
          - Refers to the process of establishing or defining new roles within a system, roles are used to group users based on their                responsibilities, access levels, or job functions. This includes determining the permissions, privileges, and access rights              associated with each role. Roles can be customized to meet specific organizational needs, such as 'administrator,' 'manager,''user,' or others. This is a POST method where UserGroupName is required.
           - Method: POST
           - Parameters:
