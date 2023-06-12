@@ -371,7 +371,7 @@
                      "UserGroupName": "Manager"
                 }        
             ```          
-        8.  Get available roles
+      8. <a name="list-role">Get available roles</a> 
             - Refers to the action of retrieving or obtaining a list of roles that are available within a system. This functionality allows users      or administrators to view the various roles that have been defined and can be assigned to users. This is a GET method with no required parameters. If you want to display the GroupName, simply use the 'search' parameter and provide the GroupName as the value. The result is displayed in a similar manner to the 'like' operator.
             - Method: GET
             - Parameters:
@@ -446,7 +446,7 @@
                 ]
              ```
 
-     9. Create permission
+      9. <a name="create-permission">Create permission</a>
         - Refers to the process of setting up a new authorization level within a system, it involves defining specific rights and privileges for a          group or individual. These rights and privileges determine their access and actions within the system. This is a POST method where in you can      add by individual or by group, depends on the neeed. If the permission you created already exists, the system will update the changes you've made. If not, then the system will insert the permission    
          - endpoint `/api/permissions/`
          - For a group, you need the UserGroupID, which is the ID of the roles created.
@@ -498,7 +498,7 @@
                         "DateUpdated": null
                       } 
               ```
-       10. Get available permission 
+      10. <a name="list-permission">Get available permission</a> 
             - This refers to the action of retrieving or obtaining a list of permissions available within a system. This functionality allows users or administrators to view the various permissions that have been defined and can be assigned to users or roles. It is a GET method that allows searching by a group or by individual, or displaying the permissions without using `search` as a parameter
             - endpoint `/api/permissions/`
             - For individuals, simply type the username, and it will return all similar names. This search utilizes the 'like' operator.
@@ -558,7 +558,7 @@
                             }
                         ]           
                     ```
-     11. Assigning of permission to a role. 
+      11. <a name="roles-permissions">Assigning of permission to a role.</a>
          - Refers to the process of granting specific permissions or access rights to a user or role within a system.This process is                 typically performed using a POST method, where `<int:id>` in the endpoints represents the UserLoginID, which uniquely identifies the user or role. 
           - endpoint `/api/roles/<int:id>/permissions/`
           - Request 
@@ -580,7 +580,7 @@
                     }
                 ]
             ```
-     12. Get available permission to a certain role
+      12. <a name="list-roles-permissions">Get available permission to a certain role.</a>
          - Refers to retrieving the list of permissions available for a specific role in a system. This allows administrators to view and           manage the permissions assigned to that role. This is a GET method where `<int:id>` in the endpoints represents the UserGroupID
           - endpoint api/roles/<int:id>/permissions/
           - Request `/api/roles/1/permissions/`
@@ -624,7 +624,7 @@
                           }
                 ]
             ```
-      13. Create Signup 
+      13. <a name="create-signup">Create Signup</a> 
           -  Refers to the action of adding a new user account to the system. 
           -  Make sure to provide the username, email, and password of the user:
           - Method: POST
@@ -651,7 +651,7 @@
                 }
             ```
             
-      14. To Login
+      14. <a name="create-login">To Login</a>
           - To check if a user has been successfully added. 
           - Method: POST
           - Parameters:
@@ -690,7 +690,7 @@
             ```
              
 
-     15. Adding of list of roles to the user 
+      15. Adding of list of roles to the user 
         - The process of assigning multiple roles to a user within a system refers to allowing the user to have access to different sets of permissions and privileges associated with each role. Typically, the assignment of roles to a user is performed using a POST method, where int:id in the endpoints represents the UserLoginID that uniquely identifies the user. To assign multiple roles, you should replace int:id with the actual UserLoginID of the user. Additionally, the 'UserGroupID' parameter is used to specify the group to which each role belongs, and the EffectiveDate parameter is used to determine when the assignment of roles becomes valid
           - endpoint `/api/users/<int:id>/roles/`
              - `/api/users/2/roles/`
@@ -713,7 +713,7 @@
                     }
                 ]
             ```
-     16. Getting the list of roles assigned to a user
+      16. <a name="users-roles">Getting the list of roles assigned to a user</a> 
         - Refers to the action of retrieving the roles that have been added or assigned to a specific user within a system. This functionality allows administrators or authorized individuals to view the roles associated with a particular user. This is accomplished using a GET method, where <int:id> in the endpoints represents the UserLoginID, which uniquely identifies the user.
           - endpoint `/api/users/<int:id>/roles/`
           - Request `/api/users/8/roles/`
@@ -736,7 +736,7 @@
                     }
                 ]
             ```
-     17. Get list of permissions assigned to a user
+      17. <a name="users-permissions">Get list of permissions assigned to a user</a>
         - Refers to the process of retrieving a collection of permissions that have been granted or assigned to a specific user within a  system. Permissions dictate what actions a user is allowed to access, modify, or execute specific functions. This is a GET method where `<int:id>` in the endpoints represents the UserLoginID.
           - endpoint `/api/users/<int:id>/permissions/`
           - Request `api/users/2/permissions/`
