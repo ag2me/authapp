@@ -380,7 +380,8 @@
             - endpoint `/api/roles/`
             - Request `/api/roles/?search=Manager`
             - Response 
-                     `[
+            - ```json
+                [
                          {
                              "UserGroupID": 3,
                              "UserGroupCode": "HRMAN",
@@ -397,9 +398,12 @@
                              "DateAdded": "2023-06-11T03:54:09Z",
                              "DateUpdated": null
                          }
-                     ]`
+                ]
+             ```
             - Request `/api/roles/?`
-            - Response `[
+            - Response 
+            - ```json
+                [
                           {
                               "UserGroupID": 1,
                               "UserGroupCode": "STF",
@@ -440,7 +444,8 @@
                               "DateAdded": "2023-06-11T03:54:09Z",
                               "DateUpdated": null
                           }
-                     ]`
+                ]
+             ```
 
      9. Create permission
         - Refers to the process of setting up a new authorization level within a system, it involves defining specific rights and privileges for a          group or individual. These rights and privileges determine their access and actions within the system. This is a POST method where in you can      add by individual or by group, depends on the neeed. If the permission you created already exists, the system will update the changes you've made. If not, then the system will insert the permission    
