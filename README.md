@@ -506,7 +506,8 @@
                  - Request 
                    `/api/permissions/?search=john`
                  - Response
-                   `[
+                 - ```json
+                    [
                        {
                            "ModuleID": 1,
                            "Desc": "johngaring",
@@ -514,59 +515,62 @@
                            "ModuleName": "Dashboard",
                            "Controller": "dashboard/"
                        }
-                   ]` 
+                    ]
+                   ``` 
             - For Group, simply type the GroupName, and it will return all similar groupname. Still utilizes the 'like' operator.
                  - Request `/api/permissions/?search=ass`
                  - Response 
-                          `[
-                               {
-                                   "ModuleID": 1,
-                                   "Desc": "Associate HR",
-                                   "GroupLoginID": 1,
-                                   "ModuleName": "Dashboard",
-                                   "Controller": "dashboard/"
-                               }
-                           ]`
+                 - ```json
+                    [
+                        {
+                            "ModuleID": 1,
+                            "Desc": "Associate HR",
+                            "GroupLoginID": 1,
+                            "ModuleName": "Dashboard",
+                            "Controller": "dashboard/"
+                        }
+                    ]
+                   ```
              - For not using search as a parameter.
                   - Request `/api/permissions/`
                   - Response 
-                            `
-                               [
-                                   {
-                                       "ModuleID": 1,
-                                       "Desc": "Admin IT",
-                                       "GroupLoginID": 2,
-                                       "ModuleName": "Dashboard",
-                                       "Controller": "dashboard/"
-                                   },
-                                   {
-                                       "ModuleID": 1,
-                                       "Desc": "Associate HR",
-                                       "GroupLoginID": 1,
-                                       "ModuleName": "Dashboard",
-                                       "Controller": "dashboard/"
-                                   },
-                                   {
-                                       "ModuleID": 1,
-                                       "Desc": "johngaring",
-                                       "GroupLoginID": 8,
-                                       "ModuleName": "Dashboard",
-                                       "Controller": "dashboard/"
-                                   }
-                               ]           
-                            `
+                  - ```json
+                        [
+                            {
+                                "ModuleID": 1,
+                                "Desc": "Admin IT",
+                                "GroupLoginID": 2,
+                                "ModuleName": "Dashboard",
+                                "Controller": "dashboard/"
+                            },
+                            {
+                                "ModuleID": 1,
+                                "Desc": "Associate HR",
+                                "GroupLoginID": 1,
+                                "ModuleName": "Dashboard",
+                                "Controller": "dashboard/"
+                            },
+                            {
+                                "ModuleID": 1,
+                                "Desc": "johngaring",
+                                "GroupLoginID": 8,
+                                "ModuleName": "Dashboard",
+                                "Controller": "dashboard/"
+                            }
+                        ]           
+                    ```
      11. Assigning of permission to a role. 
          - Refers to the process of granting specific permissions or access rights to a user or role within a system.This process is                 typically performed using a POST method, where `<int:id>` in the endpoints represents the UserLoginID, which uniquely identifies the user or role. 
           - endpoints `/api/roles/<int:id>/permissions/`
           - Request 
-              `
+          - ```json
                  {
                     "UserGroupID" : 1
                     ,"EffectiveDate": "11/06/2023"
                  }
-              `
+            ```
           - Response
-             `
+          - ```json
                 [
                     {
                         "UserGroupID": 1,
@@ -576,7 +580,7 @@
                         "UserLoginEmail": "niceman@gmail.com"
                     }
                 ]
-             `
+            ```
      12. Get available permission to a certain role
          - Refers to retrieving the list of permissions available for a specific role in a system. This allows administrators to view and           manage the permissions assigned to that role. This is a GET method where `<int:id>` in the endpoints represents the UserGroupID
           - endponts api/roles/<int:id>/permissions/
