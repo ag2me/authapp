@@ -90,7 +90,7 @@
       
  # API
    * POST [`/api/branches/`](#create-branch) Create branch
-   * GET `/api/branches/` Get list of branch 
+   * GET [`/api/branches/`](#list-branch) Get list of branch 
    * POST `/api/systems/` Create system 
    * GET `/api/systems/` Get list of system 
    * POST `/api/modules/` Create module 
@@ -135,7 +135,7 @@
                }
               ```
 
-      2. To check branch successfully added.
+      2. <a name="list-branch">To check branch successfully added.</a> 
          - This endpoint retrieves a list of branches for the specified company/entity. 
          - It allows you to search for branches based on the branch name.
          - HTTP Method: GET
