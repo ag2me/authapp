@@ -88,8 +88,8 @@
        - Used django built-in test case
       
  # API LIST
-    * POST `/api/branches/` Create Branch 
-    * GET `/api/branches/` Get list of Branch 
+   * POST `/api/branches/` Create Branch 
+   * GET `/api/branches/` Get list of Branch 
     * POST `/api/systems/` Create System 
     * GET `/api/systems/` Get list of system 
     * POST `/api/modules/` Create Module 
