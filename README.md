@@ -404,46 +404,46 @@
             - Response 
             - ```json
                 [
-                          {
-                              "UserGroupID": 1,
-                              "UserGroupCode": "STF",
-                              "UserGroupName": "Associate HR",
-                              "ReferenceTableStatusID": 1,
-                              "DateAdded": "2023-06-09T18:44:08Z",
-                              "DateUpdated": null
-                          },
-                          {
-                              "UserGroupID": 2,
-                              "UserGroupCode": "ADIT",
-                              "UserGroupName": "Admin IT",
-                              "ReferenceTableStatusID": 1,
-                              "DateAdded": "2023-06-09T18:44:53Z",
-                              "DateUpdated": null
-                          },
-                          {
-                              "UserGroupID": 3,
-                              "UserGroupCode": "HRMAN",
-                              "UserGroupName": "HR Manager",
-                              "ReferenceTableStatusID": 1,
-                              "DateAdded": "2023-06-09T18:45:44Z",
-                              "DateUpdated": null
-                          },
-                          {
-                              "UserGroupID": 4,
-                              "UserGroupCode": "515D",
-                              "UserGroupName": "HouseKeeping",
-                              "ReferenceTableStatusID": 1,
-                              "DateAdded": "2023-06-11T03:51:39Z",
-                              "DateUpdated": null
-                          },
-                          {
-                              "UserGroupID": 5,
-                              "UserGroupCode": "9989",
-                              "UserGroupName": "Manager",
-                              "ReferenceTableStatusID": 1,
-                              "DateAdded": "2023-06-11T03:54:09Z",
-                              "DateUpdated": null
-                          }
+                    {
+                        "UserGroupID": 1,
+                        "UserGroupCode": "STF",
+                        "UserGroupName": "Associate HR",
+                        "ReferenceTableStatusID": 1,
+                        "DateAdded": "2023-06-09T18:44:08Z",
+                        "DateUpdated": null
+                    },
+                    {
+                        "UserGroupID": 2,
+                        "UserGroupCode": "ADIT",
+                        "UserGroupName": "Admin IT",
+                        "ReferenceTableStatusID": 1,
+                        "DateAdded": "2023-06-09T18:44:53Z",
+                        "DateUpdated": null
+                    },
+                    {
+                        "UserGroupID": 3,
+                        "UserGroupCode": "HRMAN",
+                        "UserGroupName": "HR Manager",
+                        "ReferenceTableStatusID": 1,
+                        "DateAdded": "2023-06-09T18:45:44Z",
+                        "DateUpdated": null
+                    },
+                    {
+                        "UserGroupID": 4,
+                        "UserGroupCode": "515D",
+                        "UserGroupName": "HouseKeeping",
+                        "ReferenceTableStatusID": 1,
+                        "DateAdded": "2023-06-11T03:51:39Z",
+                        "DateUpdated": null
+                    },
+                    {
+                        "UserGroupID": 5,
+                        "UserGroupCode": "9989",
+                        "UserGroupName": "Manager",
+                        "ReferenceTableStatusID": 1,
+                        "DateAdded": "2023-06-11T03:54:09Z",
+                        "DateUpdated": null
+                    }
                 ]
              ```
 
@@ -452,16 +452,18 @@
          - endpoint `/api/permissions/`
          - For a group, you need the UserGroupID, which is the ID of the roles created.
             - Request 
-               `{
+            - ```json
+                {
                     "UserGroupID" : 1
                     ,"SystemID" : 1
                     ,"BranchID" : 1
                     ,"ModuleID" : 1
                     ,"IsSystemListAllowed" : "N"
-                 }`
+                }
+              ```
 
             - Response
-               `
+            - ```json
                  {
                      "UserRightID": 2,
                      "BranchID": 1,
@@ -470,20 +472,20 @@
                      "ModuleID": 1,
                      "IsSystemListAllowed": "N"
                  }   
-               `
+             ```
           - For Individual, you need the UserLoginID which is the ID from the Signup created.
-             - Request
-                 `
-                    {
-                        "UserLoginID" : 8
-                        ,"SystemID" : 1
-                        ,"BranchID": 1
-                        ,"ModuleID": 1
-                        ,"IsSystemListAllowed": "N"
-                    }   
-                 ` 
-              - Response
-                 `
+            - Request
+            - ```json
+                {
+                    "UserLoginID" : 8
+                    ,"SystemID" : 1
+                    ,"BranchID": 1
+                    ,"ModuleID": 1
+                    ,"IsSystemListAllowed": "N"
+                }   
+               ``` 
+            - Response
+            - ```json
                      {
                         "UserRightID": 3,
                         "SystemID": 1,
@@ -495,7 +497,8 @@
                         "ReferenceTableStatusID": 1,
                         "DateAdded": "2023-06-11T05:47:46Z",
                         "DateUpdated": null
-                      } `
+                      } 
+              ```
        10. Get available permission 
             - This refers to the action of retrieving or obtaining a list of permissions available within a system. This functionality allows users or administrators to view the various permissions that have been defined and can be assigned to users or roles. It is a GET method that allows searching by a group or by individual, or displaying the permissions without using `search` as a parameter
             - endpoint `/api/permissions/`
