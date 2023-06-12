@@ -91,7 +91,7 @@
  # API
    * POST [`/api/branches/`](#create-branch) Create branch
    * GET [`/api/branches/`](#list-branch) Get list of branch 
-   * POST `/api/systems/` Create system 
+   * POST [`/api/systems/`](#create-system) Create system 
    * GET `/api/systems/` Get list of system 
    * POST `/api/modules/` Create module 
    * GET `/api/modules/` Get list of  module 
@@ -181,7 +181,7 @@
                         ]
                ``` 
                       
-      3. Create System.
+      3. <a name="create-system">Create System.</a>
          - This endpoint is used to add a new system to the specified entity/company.
          - HTTP Method: POST
          - Parameters: 
