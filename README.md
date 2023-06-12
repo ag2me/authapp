@@ -72,7 +72,7 @@
          - pip install -r requirements.txt
   * Database 
        - Download and Install MySQL Server (MariaDB). 
-       - Please see the screenshot [LINK](https://github.com/ag2me/auth_app/raw/readme/image/authapp%20diagram.bmp).
+       - Please see the screenshot [LINK](https://github.com/ag2me/auth_app/raw/readme/image/sqldump.JPG)
        - Create a database named 'authapp' and then restore the dump file to the created database.
        - If you encounter an error like:
                 `{
