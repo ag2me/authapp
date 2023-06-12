@@ -215,7 +215,8 @@
            - Example Request:
              - GET `/api/systems/?search=Realty`
            - Example Response:
-             - `{
+             - ```json
+                {
                    "SystemID": 3,
                    "EntityNameID": 1,
                    "SystemCode": null,
@@ -224,10 +225,13 @@
                    "ReferenceTableStatusID": 1,
                    "DateAdded": "2023-06-11T15:23:56Z",
                    "DateUpdated": null
-               }`
+               }
+               ```
             - To display to all
                - Request `/api/systems/`
-               - Response `[
+               - Response 
+               - ```json
+                    [
                               {
                                   "SystemID": 1,
                                   "EntityNameID": 1,
@@ -248,7 +252,8 @@
                                   "DateAdded": "2023-06-11T11:40:09Z",
                                   "DateUpdated": null
                               }
-                          ]` 
+                    ]
+                 ``` 
       5. Create Module 
           - Refers to the Modules used for the system. 
           - HTTP Method: POST
@@ -261,7 +266,9 @@
              - ModuleSequence: This parameter represents the sequence number of the module.
              - IsDefaultSystemController: Use 'N' if the module is for navigation purposes. Use 'Y' if the module is for permissions such as create, delete, and others.
            - endpoint `api/modules/`
-           - Request `{
+           - Request 
+           - ```json
+                {
                            "ModuleName" : "Transaction"
                            ,"SystemID" : 1
                            ,"ModuleController": "transaction/"
@@ -270,9 +277,11 @@
                            ,"ModuleSequence" : 1
                            ,"IsComponent": "N"
                            ,"IsDefaultSystemController":"N"
-                       }`
+                }
+             ```
             - Response
-                     `{
+            - ```json
+                {
                          "ModuleID": 2,
                          "SystemID": 1,
                          "ModuleName": "Transaction",
@@ -282,7 +291,8 @@
                          "ModuleSequence": 1,
                          "IsComponent": "N",
                          "IsDefaultSystemController": "N"
-                     }`
+                }
+             ```
       6. To verify the modules added.
            * The statement describes a GET method used to retrieve modules. The parameter used is search, which allows for filtering the modules based on their names using a "like" operator.
            - HTTP Method: GET
