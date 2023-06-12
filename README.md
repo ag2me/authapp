@@ -4,7 +4,7 @@
   * The "Login Roles, Access, and Permissions" project provides a secure user authorization system with role-based access control and granular permissions. It enables administrators to define roles and assign permissions to users based on their roles. This allows organizations to manage user access effectively, ensuring authorized users can access specific modules and components. 
  
 * **FEATURES**
-  * **Features of the project include:
+  * **Features of the project include:**
     * _Role-Based Access Control (RBAC):_
         - Define different roles such as administrator, manager, or regular user.
         - Assign specific permissions to each role based on their responsibilities and access requirements.
