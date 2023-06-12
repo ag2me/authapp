@@ -145,7 +145,7 @@
            - GET `/api/branches/?search=Mabolo`
          - Example Response:
            - ```json
-            {
+             {
                  "BranchID": 2,
                  "BranchName": "Mabolo",
                  "BranchCode": "BFA9",
@@ -157,7 +157,8 @@
              ```      
          - To display all modules
              - Request `/api/branches/`
-             - Response ```json[
+             - Response ```json
+                        [
                             {
                                 "BranchID": 1,
                                 "BranchName": "Colon",
@@ -176,7 +177,8 @@
                                 "DateAdded": "2023-06-11T12:08:05Z",
                                 "DateUpdated": null
                             }
-                        ]``` 
+                        ]
+                        ``` 
                       
       3. Create System.
          - This endpoint is used to add a new system to the specified entity/company.
