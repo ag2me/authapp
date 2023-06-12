@@ -118,10 +118,12 @@
            - EntityNameID: Contains the ID of the associated EntityName being created.
          - Example Request:
            - POST /api/branches/
-           - ```{
+           - ```json
+             {
                "BranchName": "Mabolo",
                "EntityNameID": 1
-             }```
+             }
+             ```
           - Example Response:
             - Upon successful creation of the branch, the API will return the following response:
             - `{
