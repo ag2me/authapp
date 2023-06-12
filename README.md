@@ -62,14 +62,14 @@
     * **[Clone Repo :](https://github.com/ag2me/authapp.git)** 
     * **Python**
        - Version compatible  from 3.9 to latest
-       - install virtualenv and wrapper
+       - Install virtualenv and wrapper
           - pip install virtualenv
           - pip install virtualenvwrapper-win
-       - create virtual using wrapper
+       - Create virtual using wrapper
          - mkvirtualenv auth_app_3_10
-       - activate virtual
+       - Activate virtual
          - workon auth_app_3_10
-       - install requirements
+       - Install requirements
          - pip install -r requirements.txt
   * **Database** 
        - Download and Install MySQL Server (MariaDB). 
