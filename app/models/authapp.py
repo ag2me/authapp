@@ -54,7 +54,7 @@ class M_EntityName(models.Model):
 class M_Entity(models.Model):
     EntityID = models.BigIntegerField(primary_key=True)
     EntityNameID = models.BigIntegerField(null=True, blank=True)
-    UserLogInID = models.BigIntegerField(null=True, blank=True)
+    UserLoginID = models.BigIntegerField(null=True, blank=True)
     BranchID = models.BigIntegerField(null=True, blank=True)
     ReferenceTableStatusID = models.BigIntegerField(default=1)
     DateAdded = models.DateTimeField(auto_now_add=True)

@@ -14,7 +14,7 @@ from django.db.models.functions import Concat, Coalesce
 
 from app.helpers.common import Repeated
 from app.models.authapp import M_UserLogin, M_UserGroupMember, M_UserGroup, \
-    M_UserRights, M_UserModule, M_System, M_Branch
+    M_UserRights, M_UserModule, M_System, M_Branch, M_Entity
 from app.helpers.app_exception import AppException
 from system_settings.constant import TABLE_STATUS_ACTIVE, GROUP_CODE_DEFAULT
 
@@ -159,6 +159,28 @@ class User():
 
         return last_inserted
 
+    def _add_entity(self, param):
+        entity_exists = M_Entity.objects.filter(UserLoginID=param['UserLoginID'], BranchID=param['BranchID']).exists()
+
+        if entity_exists:
+            raise AppException(400, 'entity user is already exist.')
+
+        last_id = M_Entity.objects.last()
+        EntityID = last_id.EntityID + 1 if last_id else 1  # get the max_id
+        param['EntityID'] = EntityID
+
+        M_Entity.objects.create(
+            EntityID=param['EntityID'],
+            EntityNameID=param['EntityNameID'],
+            UserLoginID=param['UserLoginID'],        
+            BranchID=param['BranchID']
+        )
+
+        # Get the last inserted record
+        last_inserted = M_Entity.objects.get(EntityID=EntityID)
+
+        return last_inserted
+    
     def add_new_login(self, param):
         user_exists = M_UserLogin.objects.filter(UserLoginName=param['username']).exists()
         email_exists = M_UserLogin.objects.filter(UserLoginEmail=param['email']).exists()
@@ -190,6 +212,10 @@ class User():
         with transaction.atomic():
             login = self.add_new_login(param)
             param['UserLoginID'] = login.UserLoginID
+
+            param['BranchID'] = 1
+            param['EntityNameID'] = 1
+            self._add_entity(param)
 
             group = self._get_group_info()
             param['UserGroupID'] = group.UserGroupID
