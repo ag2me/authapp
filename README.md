@@ -90,21 +90,21 @@
  # API LIST
    * POST `/api/branches/` Create Branch 
    * GET `/api/branches/` Get list of Branch 
-    * POST `/api/systems/` Create System 
-    * GET `/api/systems/` Get list of system 
-    * POST `/api/modules/` Create Module 
-    * GET `/api/modules/` Get list of  module 
-    * POST `/api/roles/`  Create Roles 
-    * GET `/api/roles/` get available 
-    * POST `/api/permissions/` Create permission 
-    * GET `/api/permissions/` Get available permission 
-    * POST `/api/roles/<int:id>/permissions/` Assigning of permission to a role 
-    * GET `/api/roles/1/permissions/` Get available permission to a certain role 
-    * POST `/api/signup/` Create Signup 
-    * POST `/api/login/` To Login 
-    * POST `/api/users/<int:id>/roles/` Adding of list of roles to the user 
-    * GET `/api/users/<int:id>/roles/` Getting the list of roles assigned to a user 
-    * GET `/api/users/<int:id>/permissions/`  Get list of permissions assigned to a user  
+   * POST `/api/systems/` Create System 
+   * GET `/api/systems/` Get list of system 
+   * POST `/api/modules/` Create Module 
+   * GET `/api/modules/` Get list of  module 
+   * POST `/api/roles/`  Create Roles 
+   * GET `/api/roles/` get available 
+   * POST `/api/permissions/` Create permission 
+   * GET `/api/permissions/` Get available permission 
+   * POST `/api/roles/<int:id>/permissions/` Assigning of permission to a role 
+   * GET `/api/roles/1/permissions/` Get available permission to a certain role 
+   * POST `/api/signup/` Create Signup 
+   * POST `/api/login/` To Login 
+   * POST `/api/users/<int:id>/roles/` Adding of list of roles to the user 
+   * GET `/api/users/<int:id>/roles/` Getting the list of roles assigned to a user 
+   * GET `/api/users/<int:id>/permissions/`  Get list of permissions assigned to a user  
     
  # HOW TO USE API
    * After completing the installations, we can now begin using the system.
