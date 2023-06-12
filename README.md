@@ -92,7 +92,7 @@
    * POST [`/api/branches/`](#create-branch) Create branch
    * GET [`/api/branches/`](#list-branch) Get list of branch 
    * POST [`/api/systems/`](#create-system) Create system 
-   * GET `/api/systems/` Get list of system 
+   * GET [`/api/systems/`](#list-system) Get list of system 
    * POST `/api/modules/` Create module 
    * GET `/api/modules/` Get list of  module 
    * POST `/api/roles/`  Create roles 
@@ -206,7 +206,7 @@
                     "SystemDescription": "For Realty"
                 }
                ```
-      4. To check if the created system successfully added.
+      4. <a name="list-system">To check if the created system successfully added.</a>
            - This endpoint retrieves a list of system. 
            - It allows you to search for system based on the system name.
            - HTTP Method: GET
