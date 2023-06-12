@@ -561,7 +561,7 @@
                     ```
      11. Assigning of permission to a role. 
          - Refers to the process of granting specific permissions or access rights to a user or role within a system.This process is                 typically performed using a POST method, where `<int:id>` in the endpoints represents the UserLoginID, which uniquely identifies the user or role. 
-          - endpoints `/api/roles/<int:id>/permissions/`
+          - endpoint `/api/roles/<int:id>/permissions/`
           - Request 
           - ```json
                  {
@@ -583,7 +583,7 @@
             ```
      12. Get available permission to a certain role
          - Refers to retrieving the list of permissions available for a specific role in a system. This allows administrators to view and           manage the permissions assigned to that role. This is a GET method where `<int:id>` in the endpoints represents the UserGroupID
-          - endponts api/roles/<int:id>/permissions/
+          - endpoint api/roles/<int:id>/permissions/
           - Request `/api/roles/1/permissions/`
           - Response 
           - ```json
@@ -693,7 +693,7 @@
 
      15. Adding of list of roles to the user 
         - The process of assigning multiple roles to a user within a system refers to allowing the user to have access to different sets of permissions and privileges associated with each role. Typically, the assignment of roles to a user is performed using a POST method, where int:id in the endpoints represents the UserLoginID that uniquely identifies the user. To assign multiple roles, you should replace int:id with the actual UserLoginID of the user. Additionally, the 'UserGroupID' parameter is used to specify the group to which each role belongs, and the EffectiveDate parameter is used to determine when the assignment of roles becomes valid
-          - endpoints `/api/users/<int:id>/roles/`
+          - endpoint `/api/users/<int:id>/roles/`
              - `/api/users/2/roles/`
           - Request
           - ```json
@@ -716,7 +716,7 @@
             ```
      16. Getting the list of roles assigned to a user
         - Refers to the action of retrieving the roles that have been added or assigned to a specific user within a system. This functionality allows administrators or authorized individuals to view the roles associated with a particular user. This is accomplished using a GET method, where <int:id> in the endpoints represents the UserLoginID, which uniquely identifies the user.
-          - endpoints `/api/users/<int:id>/roles/`
+          - endpoint `/api/users/<int:id>/roles/`
           - Request `/api/users/8/roles/`
           - Response
           - ```json 
