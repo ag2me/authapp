@@ -157,7 +157,8 @@
              ```      
          - To display all modules
              - Request `/api/branches/`
-             - Response ```json
+             - Response 
+             - ```json
                         [
                             {
                                 "BranchID": 1,
