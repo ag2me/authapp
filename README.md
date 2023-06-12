@@ -76,10 +76,12 @@
        - Please see the screenshot [LINK](https://github.com/ag2me/authapp/blob/main/app/static/img/sql-dump-path.jpg)
        - Create a database named 'authapp' and then restore the dump file to the created database.
        - If you encounter an error like:
-                `{
+       - ```json
+            {
                     "code": 401,
                     "message": "(1449, \"The user specified as a definer ('localhost'@'%') does not exist\")"
-                }`
+            }
+         ```
           while using the endpoints, simply add the user 'localhost' to the database SQL login.
    * **EndPoints Tools**
        - Download and Install postman
