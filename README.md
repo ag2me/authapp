@@ -696,14 +696,14 @@
           - endpoints `/api/users/<int:id>/roles/`
              - `/api/users/2/roles/`
           - Request
-             `
+          - ```json
                 {
                    "UserGroupID" : 1
                    ,"EffectiveDate": "11/06/2023"
                 }
-             `
+            ```
           - Response
-             `
+          - ```json
                 [
                     {
                         "UserGroupID": 1,
@@ -713,34 +713,37 @@
                         "UserLoginEmail": "niceman@gmail.com"
                     }
                 ]
-             `
+            ```
      16. Getting the list of roles assigned to a user
         - Refers to the action of retrieving the roles that have been added or assigned to a specific user within a system. This functionality allows administrators or authorized individuals to view the roles associated with a particular user. This is accomplished using a GET method, where <int:id> in the endpoints represents the UserLoginID, which uniquely identifies the user.
           - endpoints `/api/users/<int:id>/roles/`
           - Request `/api/users/8/roles/`
-          - Response ` 
-                      [
-                          {
-                              "UserGroupID": 1,
-                              "UserLoginID": 8,
-                              "UserGroupName": "Associate HR",
-                              "UserLoginName": "johngaring",
-                              "UserLoginEmail": "ag2@gmail.com"
-                          },
-                          {
-                              "UserGroupID": 5,
-                              "UserLoginID": 8,
-                              "UserGroupName": "Manager",
-                              "UserLoginName": "johngaring",
-                              "UserLoginEmail": "ag2@gmail.com"
-                          }
-                      ]
-                   `
+          - Response
+          - ```json 
+                [
+                    {
+                        "UserGroupID": 1,
+                        "UserLoginID": 8,
+                        "UserGroupName": "Associate HR",
+                        "UserLoginName": "johngaring",
+                        "UserLoginEmail": "ag2@gmail.com"
+                    },
+                    {
+                        "UserGroupID": 5,
+                        "UserLoginID": 8,
+                        "UserGroupName": "Manager",
+                        "UserLoginName": "johngaring",
+                        "UserLoginEmail": "ag2@gmail.com"
+                    }
+                ]
+            ```
      17. Get list of permissions assigned to a user
         - Refers to the process of retrieving a collection of permissions that have been granted or assigned to a specific user within a  system. Permissions dictate what actions a user is allowed to access, modify, or execute specific functions. This is a GET method where `<int:id>` in the endpoints represents the UserLoginID.
           - endpoint `/api/users/<int:id>/permissions/`
           - Request `api/users/2/permissions/`
-          - Response `[
+          - Response 
+          - ```json
+                [
                         {
                             "ModuleID": 1,
                             "Desc": "CharlsDarwin",
@@ -750,7 +753,8 @@
                             "ModuleDescription": null,
                             "IsComponent": "N"
                         }
-                    ]`
+                ]
+            ```
 
 # HOW TO USE UNIT TEST
 * python manage.py test
