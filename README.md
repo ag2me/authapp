@@ -87,7 +87,7 @@
     * Unit Test 
        - Used django built-in test case
       
- # API LIST
+ # API
    * POST `/api/branches/` Create branch 
    * GET `/api/branches/` Get list of branch 
    * POST `/api/systems/` Create system 
