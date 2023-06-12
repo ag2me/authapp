@@ -89,7 +89,7 @@
        - Used django built-in test case
       
  # API
-   * POST <a name="create-branch">`/api/branches/`</a> Create branch 
+   * POST [`/api/branches/`](#create-branch) Create branch
    * GET `/api/branches/` Get list of branch 
    * POST `/api/systems/` Create system 
    * GET `/api/systems/` Get list of system 
@@ -109,7 +109,7 @@
     
  # HOW TO USE API
    * After completing the installations, we can now begin using the system.
-      1. [Create the Branch.](#create-branch)        
+      1. <a name="create-branch">Create the Branch</a>        
          - This endpoint is used to add a branch for a company/entity.
          - HTTP Method: POST
          - Parameters:
