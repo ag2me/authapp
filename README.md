@@ -55,7 +55,7 @@
          - This represents the assignment of users to specific roles and permissions. It establishes which users are assigned to which user groups and their corresponding permissions.
          
    * Diagram
-       * [Click me for the image](https://github.com/ag2me/auth_app/raw/readme/image/authapp%20diagram.bmp)   
+       * [Click me for the image](https://github.com/ag2me/authapp/blob/main/app/static/img/erd.jpg)   
    
 * Installation
     * [Clone Repo :](https://github.com/ag2me/authapp.git) 
