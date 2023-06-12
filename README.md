@@ -660,14 +660,14 @@
               - password (string): This is the password that the user set during the signup process.
           - endpoint `/api/login/`
           - Request  
-                 `
+          - ```json
                    {
                        "username": "johngaring"
                        ,"password": "qwerty"
                    }
-                 `
+            ```
           - Response
-                `
+          - ```json
                   [
                       {
                           "UserLoginID": 8,
@@ -688,7 +688,7 @@
                           "IsLogin": true
                       }
                   ]
-                `
+            ```
              
 
      15. Adding of list of roles to the user 
