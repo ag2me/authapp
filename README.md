@@ -1,6 +1,6 @@
 # LOGIN ROLES, ACCESS AND PERMISSION
 
-** INTRODUCTION
+* *INTRODUCTION*
   * The "Login Roles, Access, and Permissions" project provides a secure user authorization system with role-based access control and granular permissions. It enables administrators to define roles and assign permissions to users based on their roles. This allows organizations to manage user access effectively, ensuring authorized users can access specific modules and components. 
  
 * Features
