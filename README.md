@@ -126,12 +126,14 @@
              ```
           - Example Response:
             - Upon successful creation of the branch, the API will return the following response:
-            - `{
+            - ```json
+               {
                  "BranchID": 2,
                  "EntityNameID": 1,
                  "BranchName": "Mabolo",
                  "BranchCode": "BFA9"
-               }`
+               }
+              ```
 
       2. To check branch successfully added.
          - This endpoint retrieves a list of branches for the specified company/entity. 
