@@ -1,7 +1,7 @@
 # LOGIN ROLES, ACCESS AND PERMISSION
 
-* Introduction
-  * The "Login Roles, Access, and Permissions" project provides a secure user authorization system with role-based access control and granular permissions. It enables administrators to define roles and assign permissions to users based on their roles. This allows organizations to manage user access effectively, ensuring authorized users can access specific resources = modules and components. 
+** INTRODUCTION
+  * The "Login Roles, Access, and Permissions" project provides a secure user authorization system with role-based access control and granular permissions. It enables administrators to define roles and assign permissions to users based on their roles. This allows organizations to manage user access effectively, ensuring authorized users can access specific modules and components. 
  
 * Features
   * Features of the project include:
@@ -21,15 +21,16 @@
         - Allow administrators to customize role definitions, permissions, and access rules.
         - Support dynamic updates to role and permission configurations without requiring code changes.
       * Scalability and Performance:
-        - Design the system to handle a large number of users and roles efficiently.
-        - Ensure the system can scale with the growing user base and increasing access demands.
+        - The system design handles a large number of users and roles efficiently.
+        - The system can scale to ensure efficient performance and handle increasing access demands as the user base grows.
      * Support multiple entities: 
-       - The system should be designed to handle multiple entities, such as organizations, companies, or customers. 
-       - It should be able to store and manage data for each entity separately, ensuring that the information is isolated and organized.
+       - The system is designed to handle multiple entities, including organizations, companies, or customers.
+       - The system is capable of storing and managing data for each entity separately, ensuring that the information is isolated and organized for each entity.
      * Support multiple branches per entity: 
-       - In addition to handling multiple entities, the system should also be capable of managing multiple branches or divisions within each entity. This enables hierarchical structures within the system and allows for proper organization and management of different branches.
+       - In addition to handling multiple entities, the system is also capable of managing multiple branches or divisions within each entity. This functionality enables the establishment of hierarchical structures within the system, facilitating proper organization and management of different branches.
     * Support access for groups and individuals: 
-      - The system should provide flexible access control mechanisms to manage permissions for both groups and individual users. This means that different groups of users or individual users should have different levels of access rights based on their roles and responsibilities within the system. Access control ensures that only authorized individuals or groups can perform certain actions or access specific information.
+      - The system provides flexible access control mechanisms to manage permissions for both groups and individual users. This ensures that different groups of users and individual users have varying levels of access rights based on their roles and responsibilities within the system. 
+      - The access control mechanism ensures that only authorized individuals or groups can perform specific actions or access designated information. Unauthorized access is prevented, maintaining the security and integrity of the system.
   
 * Database 
    *  The structure accommodates a wide range of permissions, roles, and users per entity, per branch, and per system. It can dynamically and easily add both individual and group entities. 
