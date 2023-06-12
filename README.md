@@ -34,7 +34,7 @@
   
 * **DATABASE** 
    *  The structure accommodates a wide range of permissions, roles, and users per entity, per branch, and per system. It can dynamically and easily add both individual and group entities. 
-   * Used MYSQL
+   * MYSQL
    * Tables
      * M_EntityName: 
        - This represents the list of companies using the system. It stores information about the companies that are utilizing the system.
