@@ -190,18 +190,22 @@
             - SystemDescription (string): A description of the system.
          - Example Request:
             - POST `/api/systems/`
-            -  `{
+            -  ```json
+                {
                     "SystemName": "Realty System",
                     "EntityNameID": 1,
                     "SystemDescription": "For Realty"
-                }`
+                }
+               ```
           - Example Response:
-             - `{
+             - ```json
+                {
                     "SystemID": 3,
                     "EntityNameID": 1,
                     "SystemName": "Realty System",
                     "SystemDescription": "For Realty"
-                }`
+                }
+               ```
       4. To check if the created system successfully added.
            - This endpoint retrieves a list of system. 
            - It allows you to search for system based on the system name.
