@@ -103,6 +103,7 @@
    * GET [`/api/roles/1/permissions/`](#list-roles-permissions) Get available permission to a certain role 
    * POST [`/api/signup/`](#create-signup) Create signup 
    * POST [`/api/login/`](#login) To login 
+   * POST [`/api/users/<int:id>/roles/`](#add-role) Adding of list of roles to the user
    * GET [`/api/users/<int:id>/roles/`](#users-roles) Getting the list of roles assigned to a user 
    * GET [`/api/users/<int:id>/permissions/`](#users-permissions)  Get list of permissions assigned to a user  
     
@@ -558,7 +559,7 @@
                             }
                         ]           
                     ```
-      11. <a name="roles-permissions">Assigning of permission to a role.</a>
+      11. <a name="roles-permissions">Assigning of permission to a role</a>
          - Refers to the process of granting specific permissions or access rights to a user or role within a system.This process is                 typically performed using a POST method, where `<int:id>` in the endpoints represents the UserLoginID, which uniquely identifies the user or role. 
           - endpoint `/api/roles/<int:id>/permissions/`
           - Request 
@@ -580,7 +581,7 @@
                     }
                 ]
             ```
-      12. <a name="list-roles-permissions">Get available permission to a certain role.</a>
+      12. <a name="list-roles-permissions">Get available permission to a certain role</a>
          - Refers to retrieving the list of permissions available for a specific role in a system. This allows administrators to view and           manage the permissions assigned to that role. This is a GET method where `<int:id>` in the endpoints represents the UserGroupID
           - endpoint api/roles/<int:id>/permissions/
           - Request `/api/roles/1/permissions/`
@@ -690,7 +691,7 @@
             ```
              
 
-      15. Adding of list of roles to the user 
+      15. <a name="add-role">Adding of list of roles to the user</a> 
         - The process of assigning multiple roles to a user within a system refers to allowing the user to have access to different sets of permissions and privileges associated with each role. Typically, the assignment of roles to a user is performed using a POST method, where int:id in the endpoints represents the UserLoginID that uniquely identifies the user. To assign multiple roles, you should replace int:id with the actual UserLoginID of the user. Additionally, the 'UserGroupID' parameter is used to specify the group to which each role belongs, and the EffectiveDate parameter is used to determine when the assignment of roles becomes valid
           - endpoint `/api/users/<int:id>/roles/`
              - `/api/users/2/roles/`
