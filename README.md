@@ -88,20 +88,20 @@
        - Used django built-in test case
       
  # API LIST
-   * POST `/api/branches/` Create Branch 
-   * GET `/api/branches/` Get list of Branch 
-   * POST `/api/systems/` Create System 
+   * POST `/api/branches/` Create branch 
+   * GET `/api/branches/` Get list of branch 
+   * POST `/api/systems/` Create system 
    * GET `/api/systems/` Get list of system 
-   * POST `/api/modules/` Create Module 
+   * POST `/api/modules/` Create module 
    * GET `/api/modules/` Get list of  module 
-   * POST `/api/roles/`  Create Roles 
-   * GET `/api/roles/` get available 
+   * POST `/api/roles/`  Create roles 
+   * GET `/api/roles/` Get available roles
    * POST `/api/permissions/` Create permission 
    * GET `/api/permissions/` Get available permission 
    * POST `/api/roles/<int:id>/permissions/` Assigning of permission to a role 
    * GET `/api/roles/1/permissions/` Get available permission to a certain role 
-   * POST `/api/signup/` Create Signup 
-   * POST `/api/login/` To Login 
+   * POST `/api/signup/` Create signup 
+   * POST `/api/login/` To login 
    * POST `/api/users/<int:id>/roles/` Adding of list of roles to the user 
    * GET `/api/users/<int:id>/roles/` Getting the list of roles assigned to a user 
    * GET `/api/users/<int:id>/permissions/`  Get list of permissions assigned to a user  
