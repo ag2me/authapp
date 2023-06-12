@@ -1,9 +1,9 @@
 # LOGIN ROLES, ACCESS AND PERMISSION
 
-* *INTRODUCTION*
+* **INTRODUCTION**
   * The "Login Roles, Access, and Permissions" project provides a secure user authorization system with role-based access control and granular permissions. It enables administrators to define roles and assign permissions to users based on their roles. This allows organizations to manage user access effectively, ensuring authorized users can access specific modules and components. 
  
-* Features
+* **FEATURES**
   * Features of the project include:
     * Role-Based Access Control (RBAC):
         - Define different roles such as administrator, manager, or regular user.
@@ -32,7 +32,7 @@
       - The system provides flexible access control mechanisms to manage permissions for both groups and individual users. This ensures that different groups of users and individual users have varying levels of access rights based on their roles and responsibilities within the system. 
       - The access control mechanism ensures that only authorized individuals or groups can perform specific actions or access designated information. Unauthorized access is prevented, maintaining the security and integrity of the system.
   
-* Database 
+* **DATABASE** 
    *  The structure accommodates a wide range of permissions, roles, and users per entity, per branch, and per system. It can dynamically and easily add both individual and group entities. 
    * Used MYSQL
    * Tables
@@ -58,7 +58,7 @@
    * Diagram
        * [Click me for the image](https://github.com/ag2me/authapp/blob/main/app/static/img/erd.jpg)   
    
-* Installation
+* **INSTALLATION**
     * [Clone Repo :](https://github.com/ag2me/authapp.git) 
     * Python
        - Version compatible  from 3.9 to latest
