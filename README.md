@@ -34,7 +34,7 @@
   
 * **DATABASE** 
    *  **The structure accommodates a wide range of permissions, roles, and users per entity, per branch, and per system. It can dynamically and easily add both individual and group entities.** 
-   * **MYSQL*8
+   * **MYSQL**
    * **Tables**
      * _M_EntityName:_ 
        - This represents the list of companies using the system. It stores information about the companies that are utilizing the system.
@@ -60,7 +60,7 @@
    
 * **INSTALLATION**
     * **[Clone Repo :](https://github.com/ag2me/authapp.git)** 
-    * **Python88
+    * **Python**
        - Version compatible  from 3.9 to latest
        - install virtualenv and wrapper
           - pip install virtualenv
