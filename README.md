@@ -33,34 +33,34 @@
       - The access control mechanism ensures that only authorized individuals or groups can perform specific actions or access designated information. Unauthorized access is prevented, maintaining the security and integrity of the system.
   
 * **DATABASE** 
-   *  The structure accommodates a wide range of permissions, roles, and users per entity, per branch, and per system. It can dynamically and easily add both individual and group entities. 
-   * MYSQL
-   * Tables
-     * M_EntityName: 
+   *  **The structure accommodates a wide range of permissions, roles, and users per entity, per branch, and per system. It can dynamically and easily add both individual and group entities.** 
+   * **MYSQL*8
+   * **Tables**
+     * _M_EntityName:_ 
        - This represents the list of companies using the system. It stores information about the companies that are utilizing the system.
-     * M_System: 
+     * _M_System:_ 
        - This represents the list of systems that a company is using. It provides details about the various systems employed by a company.
-     * M_Branch: 
+     * _M_Branch:_ 
        - This represents the list of branches of the companies. It stores information about the different branches or divisions within a company.
-     * M_UserLogin: 
+     * _M_UserLogin:_ 
         - This is where user information is stored and managed. It includes details about the users who have access to the system.
-     * M_UserModule:
+     * _M_UserModule:_
         - This represents the modules or tasks within the system. It defines the specific functionalities or tasks that users can perform.
-     * M_Entity: 
+     * _M_Entity:_ 
         - This represents the connection between a user and the company they belong to. It establishes the relationship between a user and the company they are associated with.
-     * M_UserGroup: 
+     * _M_UserGroup:_ 
          - This is where permissions are assigned. It defines different groups of users and the permissions associated with each group.
-     * M_UserRights: 
+     * _M_UserRights:_ 
          - This is where the assignment of permissions to roles takes place. It specifies the permissions that are granted to specific roles within the system.
-     * M_UserGroupMember: 
+     * _M_UserGroupMember:_ 
          - This represents the assignment of users to specific roles and permissions. It establishes which users are assigned to which user groups and their corresponding permissions.
          
-   * Diagram
+   * **Diagram**
        * [Click me for the image](https://github.com/ag2me/authapp/blob/main/app/static/img/erd.jpg)   
    
 * **INSTALLATION**
-    * [Clone Repo :](https://github.com/ag2me/authapp.git) 
-    * Python
+    * **[Clone Repo :](https://github.com/ag2me/authapp.git)** 
+    * **Python88
        - Version compatible  from 3.9 to latest
        - install virtualenv and wrapper
           - pip install virtualenv
@@ -71,7 +71,7 @@
          - workon auth_app_3_10
        - install requirements
          - pip install -r requirements.txt
-  * Database 
+  * **Database** 
        - Download and Install MySQL Server (MariaDB). 
        - Please see the screenshot [LINK](https://github.com/ag2me/authapp/blob/main/app/static/img/sql-dump-path.jpg)
        - Create a database named 'authapp' and then restore the dump file to the created database.
@@ -81,11 +81,11 @@
                     "message": "(1449, \"The user specified as a definer ('localhost'@'%') does not exist\")"
                 }`
           while using the endpoints, simply add the user 'localhost' to the database SQL login.
-   * EndPoints tools
+   * **EndPoints Tools**
        - Download and Install postman
        - Create a collection name Auth App.
        - Create an 'Add' request for each endpoint in the API.    
-    * Unit Test 
+    * **Unit Test** 
        - Used django built-in test case
       
  # API
