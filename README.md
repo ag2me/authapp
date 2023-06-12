@@ -585,7 +585,9 @@
          - Refers to retrieving the list of permissions available for a specific role in a system. This allows administrators to view and           manage the permissions assigned to that role. This is a GET method where `<int:id>` in the endpoints represents the UserGroupID
           - endponts api/roles/<int:id>/permissions/
           - Request `/api/roles/1/permissions/`
-          - Response `[
+          - Response 
+          - ```json
+                [
                           {
                               "UserGroupID": 1,
                               "UserLoginID": 3,
@@ -621,7 +623,8 @@
                               "UserLoginName": "johngaring",
                               "UserLoginEmail": "ag2@gmail.com"
                           }
-                      ]`
+                ]
+            ```
       13. Create Signup 
           -  Refers to the action of adding a new user account to the system. 
           -  Make sure to provide the username, email, and password of the user:
@@ -632,18 +635,22 @@
             - password (string): The password for the user's account.
           - endpoint `/api/signup`
           - Request
-                `{
+          - ```json
+                {
                  "username": "johngaring"
                  ,"email" : "ag2@gmail.com"
                  ,"password": "qwerty"
-               }`
+                }
+            ```
           - Response
-              `{
+          - ```json
+                {
                   "UserLoginID": 8,
                   "UserLoginEmail": "ag2@gmail.comm",
                   "UserLoginName": "johngaring",
                   "ReferenceTableStatusID": 1
-                }`
+                }
+            ```
             
       14. To Login
           - To check if a user has been successfully added. 
